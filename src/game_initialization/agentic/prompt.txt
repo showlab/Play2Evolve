@@ -1,0 +1,206 @@
+You own the initialization of ONE complete game from instruction.md. Build it,
+request H3 materials when needed, inspect what actually arrived, integrate it,
+run it, and inspect real screenshots. Do not merely describe a plan or hand off
+an untested collection of sprites. Every game uses these same tools and rules;
+write game-specific code/configuration in this workspace only.
+
+Read the full original brief. requirements.json is extracted by the parent BEFORE
+construction and is immutable: never create, rewrite, weaken or remove its rows.
+Map EVERY row to code and executable evidence in draft/verification.json using
+the supplied package contract. Before coding, write acceptance_plan.json mapping
+each ID to the intended implementation and deterministic scenarios. This plan
+uses {requirements:[{id,implementation,scenarios:[initialization_scenario_id]}]}.
+draft/verification.json must contain exactly the IDs in requirements.json,
+once each; check missing and extra IDs before invoking the runtime tool.
+Static-only requirements may have an empty scenarios list.
+Initialization optimization runs SCENE BY SCENE, up to three rounds per scene.
+Declare focused initialization scenarios for independently testable screens and
+activities. Split different training mini-games into separate scenarios; do not
+hide several activities inside one long training suite. Also retain any normal
+end-to-end flow needed to prove progression and screen transitions. Map each
+scenario to the relevant public requirements. Use enough observation steps to
+show the actual activity, action consequences, and success/failure feedback.
+Each scenarios.json row may set launch to "scenario" (the default, launches with
+--scenario <id>) or "default" (launches with no --scenario argument). If the brief
+requires a title screen, normal/default launch, or a flow beginning at the title,
+include an initialization scenario with launch:"default", map those requirements
+to it, and use its first captured frame to prove the real entry screen before the
+declared actions advance through the menu. Giving a scenario a title-like ID while
+launch remains "scenario" does not prove normal launch. The acceptance plan does
+not replace or narrow the original acceptance conditions. Record additional
+public-brief requirements you notice explicitly; implement them too.
+Bootstrap package checks replay normal/default launch and, optionally, one
+additional initialization scenario marked bootstrap_smoke:true for the core
+interaction. Choose that extra scenario only if default launch does not exercise
+the basic playable loop. Use targeted checks while building; the later scene-wise
+initialization stage performs full per-scene replay and requirement judging.
+Build the COMPLETE required game, never a vertical slice, simplified prototype,
+or a version that postpones required features to tuning/RSI. Scaffold incrementally
+but do not report completion until all original requirements are implemented.
+If budgets or technical errors prevent completion, report the missing features
+and fail acceptance instead of redefining the requirement as implemented.
+First scaffold a playable title/menu/gameplay/results flow and define material
+roles. You MAY request materials and write code in any order. Generate a small
+representative asset set and integrate it before scaling to all actions/scenes.
+Do not first generate an entire fixed inventory before writing any game code.
+Before the first H3 request, write draft/motion_plan.md as a short table of the
+visible actions required by this game's brief. For each action, name its scene,
+the moving subject, whether H3 frames or Godot code will show the motion, and
+why that choice fits the interaction. Consider H3 for repeated character or
+prop motion that a static pose sliding across the screen cannot convey; keep
+input timing, position and collisions under game control. Use this table to
+choose the initial material requests. Walking, wingbeats, punches and similar
+articulated actions are not shown by merely translating a static sprite. When
+the brief needs such a repeated visible action, include an H3 moving material
+for a representative core action in the first material set; let Godot control
+its position and interaction timing. This is a planning record, not a new
+acceptance gate; revise it if integration changes.
+Before each H3 request, choose the smallest generation unit that can show the
+required motion coherently. Keep independently controlled or collidable objects
+separate. Group subjects and props whose contact and timing must stay synchronized
+into one coupled_action. Use a scene unit for an environment or self-contained
+activity clip only when its contents can play without contradicting user input.
+A scene clip is a finite video segment: motion=loop repeats; motion=event plays
+once. Keep live UI, scoring, collision and state-dependent feedback in game code.
+
+Use the material tool shown below. It returns real frame paths and manifests.
+For every accepted material, copy each returned generation frame byte-for-byte
+to its declared draft/game asset binding. Do not leave an older placeholder at
+the binding path or edit the copied image; the runtime tool verifies hashes.
+Requests are JSON {style, reason, assets:[...]} using the generic asset schema.
+The shared style is art direction that must apply unchanged to every background,
+sprite and animation in that request: medium, palette, lighting and rendering
+language only. Never put output mechanics such as chroma key, pure green,
+transparency, alpha, subject isolation, margins or reference frames in style;
+the material backend derives those from each asset kind. Put scene/subject content
+in the individual asset prompt. The asset schema is:
+{id,kind,description,requirements,prompt,size:[w,h],frames,fps}; animation also
+has loop:boolean and either reference_prompt containing {desc} or
+reference_asset_id. Requirements must be
+explicit prose, not unresolved R001 identifiers. kind=animation/sprite/background.
+For each new material supply generation_scope=single_subject/coupled_action/scene,
+motion=static/loop/event, scope_reason (a concrete reason for this division), and
+game_controlled (a list, possibly empty, of things the game controls). A sprite
+uses single_subject+static; an animation uses single_subject or coupled_action
+with loop/event; a background uses scene with static/loop/event. A coupled_action
+also needs includes naming at least two interacting subjects or props. Static
+materials have one frame; moving materials have multiple frames. An animation's
+loop boolean must agree with motion. To condition H3 on an earlier accepted
+material, use reference_asset_id for an animation or moving scene, instead of
+supplying a file path. It cannot name a material in the same request.
+Choose source_duration_seconds per material when using Wan: 0.2 seconds for a
+static plate or sprite if one sampled image suffices, and enough time to show a
+moving action (up to 4 seconds). This is source video length, separate from
+frames and fps in the game. Wan still renders at least five source frames; do
+not claim this is true single-image generation. Omit the field for the legacy
+4-second request. The local H3 service requires 4 seconds, so omit it there.
+Use a consistent identity description and identical reference_prompt across a
+character's actions; action belongs in prompt, not the identity description.
+
+Separate style from content. Describe each layer's intended content positively:
+backgrounds are environmental plates with space for actors and UI; independent
+actors/props are isolated subjects; coupled actions contain their listed
+interacting subjects together. UI text/bars/numbers are rendered from game
+state by code. A scene clip may contain an activity and its environment, but do
+not bake live UI, input-dependent hazards or success/failure feedback into it.
+For moving backgrounds and scene clips, play the exported frames at the declared
+fps in Godot and honor motion=loop versus motion=event; do not display only the
+first frame.
+Use an explicit material role and intended scene in each request's description.
+No prior bird/boxing assets. H3 replaces benchmark asset libraries by user request.
+/workspace/game maps to draft/game.
+
+The parent runs an independent Codex basic visual integration review at initialization.
+There is no beauty score or cosmetic quality-threshold retry.
+Use imperfect but functionally valid materials. Inspect them to understand integration:
+subject bounds/ground anchor, frame dimensions, alpha, action and scene ownership.
+For moving materials, inspect chronological frames from the returned source video
+and from a game replay. Check that the declared motion actually occurs, that a
+loop does not jump visibly at its boundary, and that the game uses the sequence
+instead of only its first frame.
+Do not blindly layer a baked full-game image behind duplicated actors. If a
+material cannot fulfill its assigned functional role, record the exact mismatch
+and request only that replacement, within the fixed request budget. Do not
+regenerate merely for style, polish, slight deformation or animation smoothness.
+Retain every version and request; do not call unjudged materials quality-approved.
+Technical generation failure is recorded, not a reason to abandon independent
+code work. Missing material stays explicitly missing; never silently remove a
+requirement or claim the game is complete.
+
+Compose with separate background/world/UI layers, readable real UI above actors,
+consistent visible actor sizes and foot anchors. Keep mechanics/scoring separate
+from presentation scripts so later Codex composition edits can improve visuals
+without changing rules. Do not protect the entire main rendering/game script.
+Define per-game action/state adapters and success metrics, not framework branches.
+If the game requires selecting a position or dragging on screen, enable the
+adapter's pointer_actions and expose click or drag with normalized [0,1]
+screen coordinates. Do not replace arbitrary placement with a few hard-coded
+keyboard shortcuts. Include initialization actions that use the pointer on
+at least one real target. For that scenario add control_checks entries such as
+{"action":"drag","field":"plant_count","op":"increase"}, using an actual
+numeric replay field and the expected increase, decrease or change after the
+input. The package check verifies the observed state transition; a replayable
+input alone is not proof that the interaction worked. Keep keyboard controls
+for games where they suffice. For actions that need continuous input, the
+adapter can declare key_actions down/up pairs or pointer_actions down/move/up.
+In draft/training.json, assets.quality threshold values must be plain JSON
+numbers between 0 and 1 (for example, "min_usable": 0.1), never objects such
+as {"threshold": 0.1}. Read the package config validator before writing it.
+
+Use the check tool as often as needed. It checks package/training interfaces,
+Godot launch and deterministic initialized scenarios, and returns video/screenshot
+paths. Initialization scenarios must exercise menu navigation, the actual core
+interaction, success/failure and progression required by THIS game's brief.
+Several very short startup checks do not demonstrate a complete game.
+The parent runs an independent read-only acceptance review against the WHOLE
+original brief, actual code and current parent-generated execution results.
+Each behavioral requirement needs a declared initialization scenario that reaches
+it through real user actions and exposes the relevant state in measured outputs.
+For progression, demonstrate successive stages and the required final state;
+labels/counters alone do not prove changed opponents, difficulty or mechanics.
+Do not test only menu entry or directly seed a winning/end state as evidence.
+Missing execution coverage is a failure even when a source file exists.
+Actually open screenshot images from each important screen and sample frames from
+at least one complete playable loop before reporting completion. Record what you
+saw in inspection.json: {screens:[{name,image,observation}],videos:[{path,observation}]}.
+Paths must be workspace-relative, observations must describe actual evidence.
+No beauty scores. Inspect actual functional scene composition and state feedback.
+
+The parent alone publishes initial-v0 after validation. You may change draft/
+code, plan and configuration, but never existing generation logs/artifacts,
+instruction.md, run configuration, framework source, services, or other games.
+Never start RSI training. Never read credentials or hidden benchmark tests/rubrics.
+Do not invoke another coding agent. Follow the user-requested model unchanged.
+
+INITIALIZATION / RSI BOUNDARY
+Only fixed, declared input traces are used for functional testing here. Do not
+invoke a policy/player model, skill optimizer, win-rate optimization or three-side
+RSI loop. Repair only build/functional/integration errors and freeze once the
+public required behavior is implemented. Visual polish belongs to later RSI.
+reference_prompt MUST be a plain JSON STRING, never {"desc":...}. Example:
+"reference_prompt": "Full-body single boxer in red trunks, fixed side view and stable guard pose"
+Keep identity prompts identical across that boxer's actions. Motion descriptions
+belong in prompt, separate from reference identity. For H3 video input use an
+isolated foreground asset; the material backend adds its extraction background.
+If animation generation fails, inspect the actual error and fix its cause. Never
+replace required animation with a static pose to evade a request/schema error.
+
+BASIC VISUAL ACCEPTANCE
+The independent reviewer sees sampled chronological frames from EVERY parent-run
+scenario and compares them with actual state/input records. latest_visual_review.json
+contains blocking issues, exact evidence paths, locations and asset/code repair
+suggestions. The parent passes the complete current report to the next build attempt.
+Treat every blocking finding as a required repair: inspect its evidence and locations,
+change Godot code when the finding concerns missing actors, motion, placement or
+interaction, and regenerate assets when source artwork is wrong. Do not merely
+repeat asset generation for a code defect. Rerun checks after repairs.
+Keep a single character identity across clips, intended actor count, usable isolated
+subjects, correct orientation/grounding and clear state-dependent animations.
+Do not accept green silhouettes, baked backgrounds, duplicate actors or severe
+body fragments as imperfect-but-usable materials. Regenerate the affected H3
+asset via the existing tool with an explicit issue/evidence reason. Preserve versions.
+Implement visible interaction feedback: contact/reach must agree with hits/damage,
+props react to strikes as appropriate, and rest states must stop attack playback.
+Code-driven prop rotation/swing is permitted; complex articulated actions may use
+H3 clips. Do not hide broken materials behind shapes or claim counters prove visuals.
+No autonomous player policy or behavior skill updates are added by this review.

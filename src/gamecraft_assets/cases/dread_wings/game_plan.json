@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "task_id": "platformer-dread-wings",
+  "planning_mode": "reviewable case-specific design derived from instruction.md; not an automatic general task planner",
+  "title": "Dread Wings",
+  "viewport": [1280, 720],
+  "controls": ["SPACE", "left mouse button"],
+  "states": ["title", "ready", "playing", "dead"],
+  "mechanics": {
+    "gravity": 1000,
+    "flap_velocity": -350,
+    "player_position": [280, 360],
+    "player_size": [76, 60],
+    "initial_scroll_speed": 210,
+    "maximum_scroll_speed": 360,
+    "speed_gain_per_point": 4,
+    "gap_size": 235,
+    "obstacle_spacing": 360,
+    "obstacle_width": 100,
+    "collision": "Player contact with hazards, ceiling or ground ends the run immediately",
+    "scoring": "One point for passing each obstacle pair",
+    "persistence": "Persist high score in user:// during normal play; scenario playback uses isolated deterministic state"
+  },
+  "asset_bindings": {"player": "bird", "hazards": "pipe", "background": "skyline"},
+  "ui": "Godot-native text for title, score, best score, instructions and retry",
+  "demo_scenarios": ["title_flow", "ready"],
+  "seed": 73,
+  "scope": "First playable development case. Full benchmark quality and coverage require later rollout and RSI; no official rubric is used."
+}

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Play2Evolve combines video generation models with game code to build interactive games, then jointly refines their materials and gameplay through agent playtest feedback.">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Play2Evolve · Playfulness as Feedback for Agentic Game Development</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="page.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#showcase">Skip to game videos</a>
+  <header class="site-header">
+    <a class="wordmark" href="#top">Play<span>2</span>Evolve<span class="wordmark-dot">.</span></a>
+    <nav aria-label="Page sections">
+      <a href="#showcase">Games</a><a href="#evolution">Evolution</a><a href="#materials">Materials</a><a href="#method">Method</a><a href="#results">Results</a>
+    </nav>
+  </header>
+  <main id="top">
+    <section class="hero" aria-labelledby="title">
+      <canvas id="hero-code-flow" aria-hidden="true"></canvas>
+      <div class="hero-content container">
+      <p class="eyebrow">Video generation models + game code</p>
+      <h1 id="title"><span>Play2Evolve</span><br>Playfulness as Feedback<br>for Agentic Game Development</h1>
+      <p class="hero-summary"><strong>Generated visuals and motion meet programmable gameplay.</strong><br>Play2Evolve combines video generation models with code to build interactive games. Agents playtest and jointly revise both to improve functionality, aesthetics, and gameplay.</p>
+      <div class="resource-links" aria-label="Project resources">
+        <a class="button primary" href="#showcase">Explore the games</a>
+        <span class="resource-pending">Paper · forthcoming</span>
+        <span class="resource-pending">Code · forthcoming</span>
+      </div>
+      <p class="preview-note">Project page preview · author details and release links to follow</p>
+      </div>
+      <a class="hero-scroll" href="#overview">Discover Play2Evolve <span aria-hidden="true"></span></a>
+      <button class="hero-motion" type="button" aria-pressed="false">Pause background</button>
+    </section>
+
+    <section id="overview" class="container teaser-section" aria-label="Play2Evolve overview">
+      <figure class="paper-figure">
+        <a href="media/teaser.png" target="_blank" rel="noopener" aria-label="Open the Play2Evolve teaser at full resolution"><img src="media/teaser.png" width="2145" height="1098" alt="Play2Evolve teaser: Player, Judge, and Designer agents connect code editing and video generation in a recursive game evolution loop. The right panel shows successive-evolution scores and human ratings." fetchpriority="high"></a>
+        <figcaption><strong>Video generation and code evolve together.</strong> Player, Judge, and Designer agents turn gameplay evidence into coordinated changes to visual materials and game logic. The right panel reports results from the paper’s successive-evolution study and human evaluation. <a href="media/teaser.png" target="_blank" rel="noopener">View full resolution</a></figcaption>
+      </figure>
+    </section>
+
+    <section id="showcase" class="container section" aria-labelledby="showcase-title">
+      <div class="section-heading"><div><p class="eyebrow">Video-generated materials in playable games</p><h2 id="showcase-title">From a description to a game.</h2></div><p>Video models create the visual materials. Game code brings them into interactive play. Explore real recordings across genres.</p></div>
+      <div class="game-grid">
+        <article class="game-card"><div class="video-shell"><video controls playsinline muted loop preload="none" poster="media/sky-duel.jpg" aria-label="Sky Duel aerial combat"><source src="media/sky-duel.mp4" type="video/mp4"></video></div><div class="card-caption"><div><h3>Sky Duel</h3><p>Aerial combat in a moving sky.</p></div><span class="stage">Initialization</span></div></article>
+        <article class="game-card"><div class="video-shell"><video controls playsinline muted loop preload="none" poster="media/dollhouse.jpg" aria-label="Dollhouse room and anomaly"><source src="media/dollhouse.mp4" type="video/mp4"></video></div><div class="card-caption"><div><h3>Dollhouse</h3><p>Rooms, transitions, and a hidden anomaly.</p></div><span class="stage">Initialization</span></div></article>
+        <article class="game-card"><div class="video-shell"><video controls playsinline muted loop preload="none" poster="media/plant-defense.jpg" aria-label="Plant Defense night gameplay"><source src="media/plant-defense.mp4" type="video/mp4"></video></div><div class="card-caption"><div><h3>Plant Defense</h3><p>Resource management after nightfall.</p></div><span class="stage">Evolution</span></div></article>
+        <article class="game-card"><div class="video-shell"><video controls playsinline muted loop preload="none" poster="media/boxing.jpg" aria-label="Boxing championship candidate gameplay"><source src="media/boxing.mp4" type="video/mp4"></video></div><div class="card-caption"><div><h3>Boxing Gym</h3><p>Combat, counterplay, and a knockout.</p></div><span class="stage">Evolution candidate</span></div></article>
+        <article class="game-card"><div class="video-shell"><video controls playsinline muted loop preload="none" poster="media/arcane-academy.jpg" aria-label="Arcane Academy character interaction"><source src="media/arcane-academy.mp4" type="video/mp4"></video></div><div class="card-caption"><div><h3>Arcane Academy</h3><p>A coordinated two-character interaction.</p></div><span class="stage">Refinement</span></div></article>
+        <article class="game-card"><div class="video-shell"><video controls playsinline muted loop preload="none" poster="media/dungeon-guild.jpg" aria-label="Dungeon Guild progression"><source src="media/dungeon-guild.mp4" type="video/mp4"></video></div><div class="card-caption"><div><h3>Dungeon Guild</h3><p>Recruit, equip, and complete a quest.</p></div><span class="stage">Refinement</span></div></article>
+      </div>
+      <p class="section-note">Selected excerpts illustrate different games and development stages. They are not all final evolved checkpoints.</p>
+    </section>
+
+    <section id="evolution" class="section section-tint" aria-labelledby="evolution-title"><div class="container">
+      <div class="section-heading"><div><p class="eyebrow">Watch the development process</p><h2 id="evolution-title">The same game, evolving.</h2></div><p>Inspect initialization, refinement, and evolution side by side.</p></div>
+      <div class="comparison-toolbar"><div class="game-picker" role="group" aria-label="Choose a comparison game"><button type="button" data-game="tower-defense" aria-pressed="true">Tower Defense</button><button type="button" data-game="boxing" aria-pressed="false">Boxing Gym</button><button type="button" data-game="pirate-port" aria-pressed="false">Pirate Port</button></div><button type="button" id="play-comparison" class="button compact">Play all three</button></div>
+      <p id="comparison-scene" class="comparison-scene" aria-live="polite">Tower Defense · combat scene</p>
+      <div class="comparison-grid">
+        <figure><figcaption><span>V0</span><h3>Initialization</h3><p>Create the runnable game.</p></figcaption><div class="video-shell"><video id="compare-bootstrap" controls playsinline muted preload="none" poster="media/compare-tower-defense-bootstrap.jpg" src="media/compare-tower-defense-bootstrap.mp4" aria-label="Tower Defense initialization"></video></div></figure>
+        <figure><figcaption><span>V1</span><h3>Refinement</h3><p>Repair functional and visual defects.</p></figcaption><div class="video-shell"><video id="compare-init3" controls playsinline muted preload="none" poster="media/compare-tower-defense-init3.jpg" src="media/compare-tower-defense-init3.mp4" aria-label="Tower Defense refinement"></video></div></figure>
+        <figure><figcaption><span>V2</span><h3>Evolution</h3><p>Develop gameplay and aesthetics.</p></figcaption><div class="video-shell"><video id="compare-rsi" controls playsinline muted preload="none" poster="media/compare-tower-defense-rsi.jpg" src="media/compare-tower-defense-rsi.mp4" aria-label="Tower Defense evolution"></video></div></figure>
+      </div>
+      <p class="section-note">These clips show the same gameplay setting at different checkpoints. Actions and progress differ across versions. Playing together aligns the clips in time, not their game states.</p>
+      <p id="comparison-status" role="status"></p>
+    </div></section>
+
+    <section id="materials" class="container section" aria-labelledby="materials-title">
+      <div class="section-heading"><div><p class="eyebrow">Video generation meets game code</p><h2 id="materials-title">Generate the motion.<br>Program the interaction.</h2></div><p>The planner chooses what the video model should generate and how code should integrate it into the game.</p></div>
+      <div class="collaboration-panels">
+        <article><p class="eyebrow">Video generation model</p><h3>Appearance, motion, and coordinated actions</h3><p>Generate still images, character animations, coupled actions, or environmental motion. Revise prompts, visual references, and generation scope when playtests reveal a material problem.</p></article>
+        <article><p class="eyebrow">Game code</p><h3>Input, rules, and interactive control</h3><p>Place and animate materials in the scene, trigger clips from game events, and manage collision, progression, and outcomes. Update playback and gameplay logic when materials change.</p></article>
+      </div>
+      <p class="collaboration-feedback"><strong>One feedback loop updates both.</strong> For example, upgrading a still character to an animation also requires code to handle its frames, placement, and response to player input.</p>
+      <div class="material-layout"><div class="material-demo"><div class="video-shell wide"><video controls playsinline muted loop preload="none" poster="media/material-motion.jpg" aria-label="Wildhaven static sawmill and generated processing animation"><source src="media/material-motion.mp4" type="video/mp4"></video></div><p class="section-note">Wildhaven: a still sawmill and its generated processing animation. This is an asset preview, not a gameplay replay.</p></div><div class="material-levels">
+        <div><h3>Static material</h3><p>A still sprite or background when internal motion is unnecessary.</p></div>
+        <div><h3>Single dynamic material</h3><p>Animate an actor or prop while code controls its position and state.</p></div>
+        <div><h3>Coupled-object material</h3><p>Generate interacting subjects together when contact and timing must agree.</p></div>
+        <div><h3>Full-scene material</h3><p>Generate environmental motion while code controls interaction and outcomes.</p></div>
+      </div></div>
+    </section>
+
+    <section id="method" class="section section-tint" aria-labelledby="method-title"><div class="container">
+      <div class="section-heading"><div><p class="eyebrow">The complete pipeline</p><h2 id="method-title">One loop for video generation and code.</h2></div><p>From initialization through refinement and evolution, agents coordinate material generation and code editing using playtest feedback.</p></div>
+      <figure class="paper-figure pipeline-figure">
+        <a href="media/pipeline.png" target="_blank" rel="noopener" aria-label="Open the Play2Evolve pipeline at full resolution"><img src="media/pipeline.png" width="2145" height="1098" loading="lazy" alt="Play2Evolve pipeline: initialization, refinement, and evolution. Each round connects play, judging, diagnosis, planning video and code changes, candidate play, and A/B selection. Behavior Skills guide later play, and four generation levels control material scope."></a>
+        <figcaption>Playtests guide diagnosis and planning across generated materials and game code. Candidate play verifies the integrated result, while Behavior Skills guide later exploration. <a href="media/pipeline.png" target="_blank" rel="noopener">View full resolution</a></figcaption>
+      </figure>
+      <div class="method-stages"><article><p class="eyebrow">Initialization</p><h3>Build something playable.</h3><p>A builder turns the public specification into a runnable project, video-generated materials, and replayable traces.</p></article><article><p class="eyebrow">Refinement</p><h3>Play, diagnose, repair.</h3><p>Agent-authored play programs expose defects. Diagnosis guides coordinated code and material changes, followed by candidate comparison.</p></article><article><p class="eyebrow">Evolution</p><h3>Develop the next version.</h3><p>A designer proposes gameplay and aesthetic goals. The builder implements them, and further playtests guide repairs and selection.</p></article></div>
+      <div class="skill-note"><h3>Experience carries forward.</h3><p>Behavior Skills summarize earlier play into game-local guidance for the next play program. They update the player’s context, helping later exploration use what earlier playtests learned.</p></div>
+      <details class="abstract"><summary>Read the project overview</summary><p>Play2Evolve combines video generation models with code in a recursive framework for agentic game development. Video models generate appearance and motion, while code composes the materials into interactive scenes and implements gameplay. Initialization creates a runnable game. Refinement uses playtest evidence to diagnose and repair defects in both materials and code. Evolution proposes new gameplay and aesthetic goals, implements an upgrade, and evaluates it through further play. Adaptive material generation supports still images, individual animations, coupled interactions, and scene motion. Code maintains interactive control throughout development.</p></details>
+    </div></section>
+
+    <section id="results" class="container section" aria-labelledby="results-title">
+      <div class="section-heading"><div><p class="eyebrow">Evaluation</p><h2 id="results-title">Measuring the games we build.</h2></div><p>Benchmark evaluation and human ratings examine complementary aspects of the resulting games.</p></div>
+      <div class="table-scroll"><table><caption>GameCraft-Bench · scores reported in the current manuscript</caption><thead><tr><th scope="col">Method / checkpoint</th><th scope="col">Mechanics</th><th scope="col">Depth</th><th scope="col">Functional visuals</th><th scope="col">Art</th><th scope="col">Overall</th></tr></thead><tbody>
+        <tr><th scope="row">Initialization <span>V0</span></th><td>68.70</td><td>48.83</td><td>51.63</td><td>44.76</td><td>50.81</td></tr>
+        <tr><th scope="row">Play2Code</th><td>69.84</td><td>50.07</td><td>51.95</td><td>51.77</td><td>52.46</td></tr>
+        <tr><th scope="row">Refinement <span>V1</span></th><td>72.97</td><td>52.38</td><td>52.50</td><td>49.35</td><td>54.45</td></tr>
+        <tr class="highlight"><th scope="row">Evolution <span>V2</span></th><td>78.02</td><td>56.39</td><td>57.51</td><td>57.03</td><td><strong>60.05</strong></td></tr>
+      </tbody></table></div>
+      <p class="section-note">Values are transcribed from the current manuscript. The selected videos above illustrate the method and do not define the benchmark cohort.</p>
+    </section>
+  </main>
+  <footer class="container"><a class="wordmark" href="#top">Play<span>2</span>Evolve.</a><p>Playfulness as Feedback for Agentic Game Development</p><p class="preview-note">Local preview. Release resources will be added before publication.</p></footer>
+</body>
+</html>
