@@ -53,3 +53,7 @@
 .hero-motion{position:absolute;bottom:30px;right:32px;border:1px solid #343c3b;border-radius:5px;background:rgba(0,0,0,.65);color:#adb8b5;padding:7px 11px;font-size:12px}
 .hero-motion:hover{color:#fff;border-color:#758681}
 @media(max-width:640px){.hero-motion{bottom:18px;right:18px;font-size:10px;padding:5px 8px}.hero-scroll{left:18px;transform:none;align-items:start}.hero::before{background:radial-gradient(ellipse at 50% 45%,rgba(0,0,0,.98) 20%,rgba(0,0,0,.88) 55%,rgba(0,0,0,.2))}}
+
+.evolution-stories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}.evolution-story{background:#fff;border:1px solid var(--line);border-radius:8px;padding:20px}.story-heading{display:flex;align-items:start;justify-content:space-between;gap:14px;margin-bottom:16px}.story-heading p{color:var(--muted);font-size:14px;margin:3px 0 0}.story-heading .stage{max-width:none;padding-top:2px}.story-videos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.story-videos figure{margin:0;min-width:0}.story-videos .video-shell{border-radius:5px}.story-videos figcaption{color:var(--muted);font-size:12px;line-height:1.4;margin-top:7px}.evolution-stories + .section-note{margin-top:18px}
+@media(max-width:900px){.evolution-stories{grid-template-columns:1fr}}
+@media(max-width:640px){.evolution-story{padding:15px}.story-heading{display:block}.story-heading .stage{display:block;text-align:left;margin-top:7px}.story-videos{gap:7px}}
