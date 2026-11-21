@@ -10,6 +10,28 @@ See [validation](docs/validation.md) for checks actually performed and
 No open-source license has been selected yet; this preparation copy does not grant
 redistribution rights beyond those already held by the respective owners.
 
+## Play2Evolve at a glance
+
+The teaser summarizes the central idea: playtest feedback drives coordinated
+updates to generated video materials and executable game code.
+
+<p align="center">
+  <a href="docs/media/teaser.png">
+    <img src="docs/media/teaser.png" alt="Play2Evolve teaser showing Player, Judge, and Designer agents connecting video generation and code editing" width="100%">
+  </a>
+</p>
+
+The pipeline shows how initialization, refinement, and evolution repeat the
+play, judge, diagnosis, planning, candidate-play, and selection loop. Video
+generation controls appearance and motion. Game code controls input, state,
+collision, progression, and outcomes.
+
+<p align="center">
+  <a href="docs/media/pipeline.png">
+    <img src="docs/media/pipeline.png" alt="Play2Evolve pipeline showing initialization, refinement, evolution, Behavior Skills, and adaptive video-generation levels" width="100%">
+  </a>
+</p>
+
 ## Pipeline
 
 1. **Game Initialization:** a builder turns a public game brief into a game package,
