@@ -1,7 +1,7 @@
-# Play2Evolve
+# Playfulness as Feedback for Agentic Game Development
 
-Play2Evolve generates and evolves playable Godot and browser games through agent playtesting,
-code editing, and generated video materials. This repository packages the
+**Play2Evolve** generates and evolves playable Godot and browser games through
+agent playtesting, code editing, and generated video materials. This repository packages the
 GameCraft/Godot and GameASG/HTML implementations in one Python source tree.
 
 **Release preparation:** the source has been extracted from a research workspace.
