@@ -1,8 +1,9 @@
 # Playfulness as Feedback for Agentic Game Development
 
-**Play2Evolve** treats playfulness as feedback: agents play generated games,
-turn what they observe into diagnoses, and recursively improve both executable
-game code and video-generated materials. This repository packages the
+**Play2Evolve** combines video generation models with executable game code and
+treats playfulness as feedback: agents play generated games, turn what they
+observe into diagnoses, and recursively improve both visual materials and game
+logic. This repository packages the
 GameCraft/Godot and GameASG/HTML implementations in one Python source tree.
 
 **Release preparation:** the source has been extracted from a research workspace.
