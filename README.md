@@ -10,12 +10,12 @@ See [validation](docs/validation.md) for checks actually performed and
 No open-source license has been selected yet; this preparation copy does not grant
 redistribution rights beyond those already held by the respective owners.
 
-## Timeline
+## 🗓️ Timeline
 
 - **November 24, 2026:** planned public release of the Play2Evolve code and
   project page, subject to the final release checks.
 
-## Tips
+## 💡 Tips
 
 - Agent-authored code can fail for several reasons, including environment
   differences, limitations of the agent, and small bugs in the generated or
@@ -26,7 +26,7 @@ redistribution rights beyond those already held by the respective owners.
   program or a downstream evaluation step to fail. When reporting a result,
   please include the relevant logs and configuration so that we can reproduce it.
 
-## Play2Evolve at a glance
+## 🎮 Play2Evolve at a glance
 
 The teaser summarizes the central idea: playtest feedback drives coordinated
 updates to generated video materials and executable game code.
@@ -48,7 +48,7 @@ collision, progression, and outcomes.
   </a>
 </p>
 
-## Pipeline
+## 🔁 Pipeline
 
 1. **Game Initialization:** a builder turns a public game brief into a game package,
    using video generation as a tool and checking the generated project.
@@ -67,7 +67,7 @@ The copied core keeps the original `gamecraft_*` module names. The public
 another optimization algorithm. See [stage naming](docs/architecture.md#stage-naming)
 for the mapping to retained internal names.
 
-## Choose a backend
+## 🧩 Choose a backend
 
 | Backend | Game runtime | Three stage commands | Scoring |
 | --- | --- | --- | --- |
@@ -78,7 +78,7 @@ Both adapters retain their existing execution and selection logic. Browser
 playtesting does not use the Godot recorder. Only install the system dependencies
 for the backend you intend to run.
 
-## Installation
+## 🛠️ Installation
 
 Linux and Python 3.12+ are required. Craft needs Godot 4, FFmpeg/ffprobe,
 Xvfb and xdotool on `PATH`. Recorded OS-input evaluation uses X11. GameASG
@@ -110,7 +110,7 @@ checkout throughout a run. `docs/dependencies.md` records the source revision
 used during extraction. A functioning H3 service is needed for actual material
 generation; Play2Evolve does not start or replace GPU services automatically.
 
-## Configure H3 video generation
+## 🎞️ Configure H3 video generation
 
 Start or obtain an H3-compatible HTTP service **before** running generation.
 This repository contains the client, not the H3 weights, inference environment
@@ -158,13 +158,13 @@ and check timeout, conditioning-file and multi-GPU requirements. For a custom
 endpoint requiring authentication, the current local adapter needs an appropriate
 adapter/proxy; it does not send bearer credentials by default.
 
-## Run Craft: the three stages
+## 🧱 Run Craft: the three stages
 
 Run from this repository root after installation. Replace model names if your
 account uses another model; keep the player, judge and editor choices explicit.
 Each command below calls real services except `initialization prepare`.
 
-### 1. Initialization — generate the game
+### 🌱 1. Initialization — generate the game
 
 ```bash
 play2evolve initialization prepare \
@@ -192,7 +192,7 @@ PYCODE
 )
 ```
 
-### 2. Refinement — three groups, three rounds per group
+### 🔧 2. Refinement — three groups, three rounds per group
 
 ```bash
 play2evolve refinement \
@@ -219,7 +219,7 @@ PYCODE
 )
 ```
 
-### 3. Evolution — one upgrade cycle with three repair rounds
+### 🚀 3. Evolution — one upgrade cycle with three repair rounds
 
 ```bash
 play2evolve evolution \
@@ -239,7 +239,7 @@ showcase export, benchmark scoring and additional options. Lake Flight is a
 custom example without an official benchmark rubric; official scoring requires
 a benchmark task's public instruction and exact task ID.
 
-## Run GameASG: the three stages
+## 🌐 Run GameASG: the three stages
 
 Obtain a GameASG-Bench checkout separately. The adapter requires revision
 `6427cb6517ce11ff350ec45fcae17b67c5aec245` and unchanged tracked files.
@@ -310,7 +310,7 @@ report coverage gaps; completion alone is not a benchmark pass. Evolution's
 See [GameASG operation guide](docs/gameasg.md) for interrupted-run recovery,
 additional evolution cycles, scoring, and output inspection.
 
-## Configuration and compatibility
+## ⚙️ Configuration and compatibility
 
 Copy `configs/environment.example.toml` to `configs/local.toml` and replace
 paths to use `play2evolve --config configs/local.toml COMMAND ...`. Existing
@@ -323,13 +323,13 @@ The old `bootstrap`, `initialize`, and `rsi` commands remain aliases for
 `--initialization-playtest` and `--rsi-mode` retain their meaning. See
 [stage naming](docs/architecture.md#stage-naming) before using historical scripts.
 
-## TODO
+## 🧭 TODO
 
 - [ ] Continue organizing and preparing the Craft game packages for release.
 - [ ] Select and add the final open-source license, author list, paper link, and
   release metadata.
 
-## Repository
+## 📦 Repository
 
 - `src/game_initialization/`: requirements, builder tools, game-package construction.
 - `src/gamecraft_training/package/`: refinement, evolution, candidate selection, final showcase.
@@ -346,7 +346,7 @@ outputs, private account routing, model environments, and Play2Code
 baselines are excluded. Historical per-game SkillOpt entry points are not part
 of this release; some example/adaptation helpers remain as internal dependencies.
 
-## Verification
+## ✅ Verification
 
 ```bash
 python -m pytest -q
@@ -359,7 +359,7 @@ the full live Godot pipeline nor the live Docker pipeline was run for this relea
 checks. Game packages contain executable adapter code and should come from
 trusted sources.
 
-## Citation
+## 📚 Citation
 
 If you use Play2Evolve in your research, please cite the project as follows:
 
