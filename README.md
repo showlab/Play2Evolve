@@ -1,16 +1,27 @@
 # Playfulness as Feedback for Agentic Game Development
 
+> **Weijia Mao<sup>1</sup>**, Kevin Qinghong Lin<sup>1</sup>, Zhen Fang<sup>2</sup>,
+> Danze Chen<sup>1</sup>, Dongxing Mao<sup>1</sup>, and Mike Zheng Shou<sup>1</sup>*
+>
+> <sup>1</sup> Show Lab, National University of Singapore · <sup>2</sup> University of Science and Technology of China
+>
+> *Corresponding author*
+
+<p align="center">
+  <a href="https://showlab.github.io/Play2Evolve/">🌐 Project Page</a>
+  &nbsp;&nbsp;•&nbsp;&nbsp;
+  <a href="https://github.com/showlab/Play2Evolve">💻 Code</a>
+  &nbsp;&nbsp;•&nbsp;&nbsp;
+  📄 arXiv <em>(coming soon)</em>
+</p>
+
+## ✨ Abstract
+
 **Play2Evolve** combines video generation models with executable game code and
-treats playfulness as feedback: agents play generated games, turn what they
-observe into diagnoses, and recursively improve both visual materials and game
-logic. This repository packages the
-GameCraft/Godot and GameASG/HTML implementations in one Python source tree.
-
-**Weijia Mao<sup>1</sup>**, **Kevin Qinghong Lin<sup>1</sup>**, **Zhen Fang<sup>2</sup>**, **Danze Chen<sup>1</sup>**, **Dongxing Mao<sup>1</sup>**, and **Mike Zheng Shou<sup>1</sup>***<br>
-<sup>1</sup> Show Lab, National University of Singapore · <sup>2</sup> University of Science and Technology of China<br>
-\* Corresponding author
-
-**Links:** [Project page](https://showlab.github.io/Play2Evolve/) · [Code](https://github.com/showlab/Play2Evolve) · **arXiv:** _link forthcoming_
+treats playfulness as feedback. Agents play generated games, turn observations
+into diagnoses, and recursively improve visual materials, game logic, and
+gameplay. This repository packages the GameCraft/Godot and GameASG/HTML
+implementations in one Python source tree.
 
 **Release preparation:** the source has been extracted from a research workspace.
 See [validation](docs/validation.md) for checks actually performed and
