@@ -163,3 +163,41 @@ if ("IntersectionObserver" in window) {
   resize();
   sync();
 })();
+
+// Gallery-only slow motion: preserve the timing of scientific comparisons.
+(() => {
+  const gallery = [...document.querySelectorAll('#showcase video')];
+  const toolbar = document.querySelector('.showcase-toolbar');
+  const buttons = [...document.querySelectorAll('[data-speed]')];
+  if (!gallery.length || !toolbar) return;
+  let speed = 0.75;
+  const applySpeed = video => {
+    video.defaultPlaybackRate = speed;
+    video.playbackRate = speed;
+  };
+  gallery.forEach(video => {
+    applySpeed(video);
+    video.addEventListener('loadedmetadata', () => applySpeed(video));
+  });
+  buttons.forEach(button => button.addEventListener('click', () => {
+    speed = Number(button.dataset.speed);
+    gallery.forEach(applySpeed);
+    buttons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+  }));
+  toolbar.hidden = false;
+})();
+
+// Subtle, one-time entrances. No permanently hidden content or scroll handlers.
+(() => {
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  if (!('IntersectionObserver' in window) || reduced.matches) return;
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      if (!reduced.matches) entry.target.classList.add('enter-section');
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.section-heading, .game-card, .evolution-story, .collaboration-panels article, .result-highlights>div')
+    .forEach(item => observer.observe(item));
+})();
