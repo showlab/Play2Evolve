@@ -1,55 +1,83 @@
 # Play2Evolve
 
-Play2Evolve generates and evolves playable Godot and browser games through agent playtesting,
-code editing, and generated video materials. This repository packages the
-GameCraft/Godot and GameASG/HTML implementations in one Python source tree.
+### Playfulness as Feedback for Agentic Game Development
 
-**Release preparation:** the source has been extracted from a research workspace.
-See [validation](docs/validation.md) for checks actually performed and
-[release checklist](docs/release_checklist.md) for remaining publication work.
-No open-source license has been selected yet; this preparation copy does not grant
-redistribution rights beyond those already held by the respective owners.
+**Video-generated worlds. Programmable gameplay. Improvement through play.**
 
-## Play2Evolve at a glance
+[Project page & video demos](https://play2evolve-project-preview.steadydrake257.chatgpt.site) ·
+[Installation](#installation) · [Craft quickstart](#craft-quickstart) ·
+[GameASG quickstart](#gameasg-quickstart) · [Documentation](#documentation)
 
-The teaser summarizes the central idea: playtest feedback drives coordinated
-updates to generated video materials and executable game code.
+## TL;DR
+
+**Play2Evolve builds playable games by combining video generation with game code,
+then uses agent playtesting to evolve both together.** Video models generate
+appearance and motion; code provides interaction, rules, and game state.
+Player, Judge, and Designer agents turn gameplay evidence into coordinated
+changes to visual materials and executable logic.
+
+- **Build:** turn a game brief into a runnable game with generated visual materials.
+- **Refine:** playtest, diagnose defects, and repair the visuals and code together.
+- **Evolve:** propose new gameplay and aesthetic goals, implement upgrades, and test the next version.
+
+This repository contains two backends: **Craft for Godot games** and **GameASG for
+browser games**, exposed through the `play2evolve` CLI. The
+[project page](https://play2evolve-project-preview.steadydrake257.chatgpt.site)
+shows recorded gameplay, side-by-side checkpoints, and successive evolution demos;
+it does not run the games in your browser. Paper and public code release details are forthcoming.
+
+## Overview
 
 <p align="center">
   <a href="docs/media/teaser.png">
-    <img src="docs/media/teaser.png" alt="Play2Evolve teaser showing Player, Judge, and Designer agents connecting video generation and code editing" width="100%">
+    <img src="docs/media/teaser.png" alt="Play2Evolve: Player, Judge, and Designer agents coordinate video generation and code editing using playtest feedback" width="100%">
   </a>
 </p>
 
-The pipeline shows how initialization, refinement, and evolution repeat the
-play, judge, diagnosis, planning, candidate-play, and selection loop. Video
-generation controls appearance and motion. Game code controls input, state,
-collision, progression, and outcomes.
+**One feedback loop updates both materials and code.** For example, replacing a
+still character with an animation also requires changes to frame playback,
+placement, and responses to player input. Playtesting evaluates the integrated game.
+
+### Reported results
+
+Overall GameCraft-Bench scores from the current manuscript:
+
+| Method / checkpoint | Overall score |
+| --- | ---: |
+| Initialization (V0) | 50.81 |
+| Play2Code | 52.46 |
+| Refinement (V1) | 54.45 |
+| Evolution (V2) | **60.05** |
+
+Evolution improves the overall score by **9.24 points** over initialization.
+See the [full results table](https://play2evolve-project-preview.steadydrake257.chatgpt.site/#results)
+for per-dimension scores. These manuscript results are separate from the
+[release checks](docs/validation.md); selected demo clips do not define the benchmark cohort.
+
+## How it works
+
+| Stage | What happens | Output |
+| --- | --- | --- |
+| Initialization | A builder turns a public game brief into executable code and generated materials. | A runnable game package. |
+| Refinement | Agents playtest scenario groups, diagnose defects, implement candidate repairs, and compare replays. | A refined game and playtest reports. |
+| Evolution | A designer proposes gameplay or aesthetic upgrades; further playtests guide implementation and selection. | An evolved game checkpoint. |
 
 <p align="center">
   <a href="docs/media/pipeline.png">
-    <img src="docs/media/pipeline.png" alt="Play2Evolve pipeline showing initialization, refinement, evolution, Behavior Skills, and adaptive video-generation levels" width="100%">
+    <img src="docs/media/pipeline.png" alt="Initialization, refinement, and evolution pipeline, with Behavior Skills and adaptive video-generation levels" width="100%">
   </a>
 </p>
 
-## Pipeline
+- **Behavior Skills** carry experience from earlier play into later exploration.
+- **Video Skill** is a separate component for material generation and integration.
+- **Evaluation** exports demonstrations and invokes an external benchmark evaluator;
+  internal candidate selection is distinct from benchmark scoring.
 
-1. **Game Initialization:** a builder turns a public game brief into a game package,
-   using video generation as a tool and checking the generated project.
-2. **Game Refinement:** playtest scenario groups, diagnose issues, plan repairs,
-   execute code/material candidates, and compare their replays. Program-mode
-   examples use three groups and three rounds per group.
-3. **Game Evolution:** plan a gameplay and/or aesthetic upgrade, implement it over successive
-   rounds, and evaluate the resulting game through playtests. Behavior Skill and
-   Video Skill are separate components.
-4. **Showcase and evaluation:** export final-game demonstrations and invoke the
-   external benchmark evaluator. Internal selection is distinct from
-   benchmark scoring.
-
-The copied core keeps the original `gamecraft_*` module names. The public
-`play2evolve` command dispatches to those implementations; it does not introduce
-another optimization algorithm. See [stage naming](docs/architecture.md#stage-naming)
-for the mapping to retained internal names.
+The examples below use three playtest groups with up to three repair rounds per
+group for refinement. An evolution cycle uses one upgrade with up to three repair
+rounds. The retained `gamecraft_*` modules implement these stages; the public CLI
+dispatches to them. See [stage naming](docs/architecture.md#stage-naming) for the
+mapping to legacy names.
 
 ## Choose a backend
 
@@ -63,6 +91,10 @@ playtesting does not use the Godot recorder. Only install the system dependencie
 for the backend you intend to run.
 
 ## Installation
+
+Install the package, configure the dependencies for your chosen backend, then
+follow its three-stage quickstart. Material generation requires a running
+H3-compatible service; installing this package does not deploy one.
 
 Linux and Python 3.12+ are required. Craft needs Godot 4, FFmpeg/ffprobe,
 Xvfb and xdotool on `PATH`. Recorded OS-input evaluation uses X11. GameASG
@@ -141,6 +173,8 @@ run, follow [the H3 guide](docs/h3.md) to generate a single clip, verify the MP4
 and check timeout, conditioning-file and multi-GPU requirements. For a custom
 endpoint requiring authentication, the current local adapter needs an appropriate
 adapter/proxy; it does not send bearer credentials by default.
+
+<a id="craft-quickstart"></a>
 
 ## Run Craft: the three stages
 
@@ -222,6 +256,8 @@ from refinement's three groups. See [Craft workflow](docs/workflow.md) for
 showcase export, benchmark scoring and additional options. Lake Flight is a
 custom example without an official benchmark rubric; official scoring requires
 a benchmark task's public instruction and exact task ID.
+
+<a id="gameasg-quickstart"></a>
 
 ## Run GameASG: the three stages
 
@@ -307,6 +343,18 @@ The old `bootstrap`, `initialize`, and `rsi` commands remain aliases for
 `--initialization-playtest` and `--rsi-mode` retain their meaning. See
 [stage naming](docs/architecture.md#stage-naming) before using historical scripts.
 
+## Documentation
+
+| If you want to… | Start here |
+| --- | --- |
+| Watch gameplay and compare versions | [Project page](https://play2evolve-project-preview.steadydrake257.chatgpt.site) |
+| Run Craft, export showcases, or score a game | [Craft workflow](docs/workflow.md) |
+| Run or resume the browser-game pipeline | [GameASG guide](docs/gameasg.md) |
+| Connect and validate video generation | [H3 service guide](docs/h3.md) |
+| Understand stages and internal modules | [Architecture](docs/architecture.md) |
+| Check external tools and pinned revisions | [Dependencies](docs/dependencies.md) |
+| Review tested behavior and release limitations | [Validation](docs/validation.md) · [Release checklist](docs/release_checklist.md) |
+
 ## Repository
 
 - `src/game_initialization/`: requirements, builder tools, game-package construction.
@@ -336,3 +384,11 @@ Godot and the benchmark; one browser policy test requires host Node.js. Neither
 the full live Godot pipeline nor the live Docker pipeline was run for this release; consult the validation report for skipped or failing
 checks. Game packages contain executable adapter code and should come from
 trusted sources.
+
+## Release status and license
+
+**Release preparation:** the source has been extracted from a research workspace.
+See [validation](docs/validation.md) for checks actually performed and
+[release checklist](docs/release_checklist.md) for remaining publication work.
+No open-source license has been selected yet; this preparation copy does not grant
+redistribution rights beyond those already held by the respective owners.
