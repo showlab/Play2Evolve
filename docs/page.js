@@ -230,3 +230,20 @@ if ("IntersectionObserver" in window) {
   document.querySelectorAll('.section-heading, .game-card, .evolution-story, .collaboration-panels article, .result-highlights>div')
     .forEach(item => observer.observe(item));
 })();
+
+// Mark the chapter in view without capturing scroll or changing browser history.
+(() => {
+  const links = [...document.querySelectorAll('.chapter-nav a')];
+  const sections = links.map(link => document.querySelector(link.hash));
+  if (!('IntersectionObserver' in window)) return;
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      links.forEach(link => {
+        if (link.hash === `#${entry.target.id}`) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    });
+  }, { rootMargin: '-15% 0px -65% 0px', threshold: 0 });
+  sections.filter(Boolean).forEach(section => observer.observe(section));
+})();

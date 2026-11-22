@@ -6,16 +6,19 @@
   <meta name="description" content="Play2Evolve combines video generation models with game code to build interactive games, then jointly refines their materials and gameplay through agent playtest feedback.">
   <meta name="robots" content="noindex,nofollow">
   <title>Play2Evolve · Playfulness as Feedback for Agentic Game Development</title>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Play2Evolve · Playfulness as Feedback">
+  <meta property="og:description" content="Video-generated worlds, programmable gameplay, and agents that playtest to evolve both. Explore the games, the development process, and the results.">
   <meta name="theme-color" content="#080e0e">
   <link rel="stylesheet" href="styles.css">
   <script src="page.js" defer></script>
 </head>
 <body>
-  <a class="skip" href="#showcase">Skip to game videos</a>
+  <a class="skip" href="#tldr">Skip to project summary</a>
   <header class="site-header">
     <a class="wordmark" href="#top">Play<span>2</span>Evolve<span class="wordmark-dot">.</span></a>
     <nav aria-label="Page sections">
-      <a href="#showcase">Games</a><a href="#evolution">Evolution</a><a href="#materials">Materials</a><a href="#method">Method</a><a href="#results">Results</a>
+      <a href="#tldr">Overview</a><a href="#showcase">Games</a><a href="#evolution">Evolution</a><a href="#materials">Materials</a><a href="#method">Method</a><a href="#results">Results</a>
     </nav>
   </header>
   <main id="top">
@@ -27,10 +30,9 @@
       <p class="hero-summary"><strong>Generated visuals and motion meet programmable gameplay.</strong><br>Play2Evolve combines video generation models with code to build interactive games. Agents playtest and jointly revise both to improve functionality, aesthetics, and gameplay.</p>
       <div class="resource-links" aria-label="Project resources">
         <a class="button primary" href="#showcase">Explore the games</a>
-        <span class="resource-pending">Paper · forthcoming</span>
-        <span class="resource-pending">Code · forthcoming</span>
+        <a class="button hero-secondary" href="#method">How it works</a>
       </div>
-      <p class="preview-note">Project page preview · author details and release links to follow</p>
+      <p class="preview-note">Paper and code release forthcoming · author details to follow</p>
       </div>
       <div class="hero-gallery" aria-label="A glimpse of the generated games">
         <a class="hero-feature" href="#showcase"><img src="media/sky-duel.jpg" width="1280" height="720" alt="Sky Duel gameplay in a generated aerial environment"><span class="hero-image-label"><span>Inside the games</span><strong>Generated worlds.<br>Playable possibilities.</strong></span></a>
@@ -38,8 +40,28 @@
         <p class="hero-gallery-caption">Real gameplay from agent-built games</p>
       </div>
       </div>
-      <a class="hero-scroll" href="#overview">Discover Play2Evolve <span aria-hidden="true"></span></a>
+      <a class="hero-scroll" href="#tldr">Discover Play2Evolve <span aria-hidden="true"></span></a>
       <button class="hero-motion" type="button" aria-pressed="false">Pause background</button>
+    </section>
+
+    <nav class="chapter-nav" aria-label="Explore the project">
+      <div class="container">
+        <a href="#tldr">In brief</a><a href="#showcase">Games</a><a href="#evolution">Evolution</a><a href="#materials">Materials</a><a href="#method">Method</a><a href="#results">Results</a>
+      </div>
+    </nav>
+
+    <section id="tldr" class="container tldr-section" aria-labelledby="tldr-title">
+      <div class="tldr-intro">
+        <p class="eyebrow">TL;DR</p>
+        <h2 id="tldr-title">Build a game.<br>Play it. Make it better.</h2>
+        <p class="tldr-summary">Play2Evolve brings <strong>video generation and game code</strong> into one development loop. Agents play the game, diagnose what needs to change, and revise its visuals and gameplay together.</p>
+      </div>
+      <div class="tldr-points">
+        <article><h3>Generate the world</h3><p>Video models create visual materials and motion; code turns them into an interactive game.</p></article>
+        <article><h3>Learn through play</h3><p>Player, Judge, and Designer agents use gameplay evidence to guide repairs and new goals.</p></article>
+        <article><h3>Evolve both together</h3><p>Each iteration coordinates changes to generated materials and game logic, then playtests the result.</p></article>
+      </div>
+      <div class="tldr-takeaway"><p><span>Reported result</span>Overall GameCraft-Bench score improves from <strong>50.81 to 60.05</strong>, from initialization to evolution.</p><a href="#results">See the evaluation</a></div>
     </section>
 
     <section id="overview" class="container teaser-section" aria-label="Play2Evolve overview">
@@ -52,9 +74,9 @@
     <section id="showcase" class="container section" aria-labelledby="showcase-title">
       <div class="section-heading"><div><p class="eyebrow">Video-generated materials in playable games</p><h2 id="showcase-title">From a description to a game.</h2></div><p>Video models create the visual materials. Game code brings them into interactive play. Explore real recordings across genres.</p></div>
       <div class="showcase-toolbar" hidden>
-        <p>Take a closer look.</p>
+        <p>Watch at your own pace. Each clip has its own speed control.</p>
         <div class="speed-picker" role="group" aria-label="Showcase playback speed">
-          <span>Playback</span>
+          <span>All showcase clips</span>
           <button type="button" data-speed="0.25" aria-pressed="false">0.25×</button>
           <button type="button" data-speed="0.5" aria-pressed="false">0.5×</button>
           <button type="button" data-speed="0.75" aria-pressed="true">0.75×</button>
@@ -73,7 +95,7 @@
     </section>
 
     <section id="evolution" class="section section-tint" aria-labelledby="evolution-title"><div class="container">
-      <div class="section-heading"><div><p class="eyebrow">Watch the development process</p><h2 id="evolution-title">The same game, evolving.</h2></div><p>Inspect initialization, refinement, and evolution side by side.</p></div>
+      <div class="section-heading"><div><p class="eyebrow">Watch the development process</p><h2 id="evolution-title">The same game, evolving.</h2></div><p>Inspect initialization, refinement, and evolution side by side. Choose a game below, then play all three checkpoints.</p></div>
       <div class="comparison-toolbar"><div class="game-picker" role="group" aria-label="Choose a comparison game"><button type="button" data-game="tower-defense" aria-pressed="true">Tower Defense</button><button type="button" data-game="boxing" aria-pressed="false">Boxing Gym</button><button type="button" data-game="pirate-port" aria-pressed="false">Pirate Port</button></div><button type="button" id="play-comparison" class="button compact">Play all three</button></div>
       <p id="comparison-scene" class="comparison-scene" aria-live="polite">Tower Defense · combat scene</p>
       <div class="comparison-grid">
@@ -81,7 +103,7 @@
         <figure><figcaption><span>V1</span><h3>Refinement</h3><p>Repair functional and visual defects.</p></figcaption><div class="video-shell"><video id="compare-init3" controls playsinline muted preload="none" poster="media/compare-tower-defense-init3.jpg" src="media/compare-tower-defense-init3.mp4" aria-label="Tower Defense refinement"></video></div></figure>
         <figure><figcaption><span>V2</span><h3>Evolution</h3><p>Develop gameplay and aesthetics.</p></figcaption><div class="video-shell"><video id="compare-rsi" controls playsinline muted preload="none" poster="media/compare-tower-defense-rsi.jpg" src="media/compare-tower-defense-rsi.mp4" aria-label="Tower Defense evolution"></video></div></figure>
       </div>
-      <p class="section-note">These clips show the same gameplay setting at different checkpoints. Actions and progress differ across versions. Playing together aligns the clips in time, not their game states.</p>
+      <p class="section-note">These clips show the same gameplay setting at different checkpoints. Actions and progress differ across versions. Playback starts together; actions and game states are not synchronized. Use equal playback speeds for the closest temporal comparison.</p>
       <p id="comparison-status" role="status"></p>
     </div></section>
 
@@ -141,7 +163,7 @@
         <div><span>Overall improvement</span><strong>+9.24<span> pts</span></strong><p>From initialization to evolution</p></div>
         <div><span>Mechanics · Evolution</span><strong>78.02</strong><p>GameCraft-Bench score</p></div>
       </div>
-      <div class="table-scroll"><table><caption>GameCraft-Bench · scores reported in the current manuscript</caption><thead><tr><th scope="col">Method / checkpoint</th><th scope="col">Mechanics</th><th scope="col">Depth</th><th scope="col">Functional visuals</th><th scope="col">Art</th><th scope="col">Overall</th></tr></thead><tbody>
+      <div class="table-scroll" role="region" aria-label="GameCraft-Bench results; scroll horizontally on small screens" tabindex="0"><table><caption>GameCraft-Bench · scores reported in the current manuscript</caption><thead><tr><th scope="col">Method / checkpoint</th><th scope="col">Mechanics</th><th scope="col">Depth</th><th scope="col">Functional visuals</th><th scope="col">Art</th><th scope="col">Overall</th></tr></thead><tbody>
         <tr><th scope="row">Initialization <span>V0</span></th><td>68.70</td><td>48.83</td><td>51.63</td><td>44.76</td><td>50.81</td></tr>
         <tr><th scope="row">Play2Code</th><td>69.84</td><td>50.07</td><td>51.95</td><td>51.77</td><td>52.46</td></tr>
         <tr><th scope="row">Refinement <span>V1</span></th><td>72.97</td><td>52.38</td><td>52.50</td><td>49.35</td><td>54.45</td></tr>
@@ -149,7 +171,18 @@
       </tbody></table></div>
       <p class="section-note">Values are transcribed from the current manuscript. The selected videos above illustrate the method and do not define the benchmark cohort.</p>
     </section>
+    <section class="container reading-notes" aria-labelledby="reading-notes-title">
+      <div><p class="eyebrow">A closer look</p><h2 id="reading-notes-title">About the demos.</h2></div>
+      <div class="reading-questions">
+        <details><summary>Are these videos or interactive games?</summary><p>The clips are recordings of games built with generated visual materials and executable game code. This page presents recorded demonstrations; it does not run the games in your browser.</p></details>
+        <details><summary>What changes between versions?</summary><p>Initialization builds a runnable game. Refinement repairs functional and visual defects. Evolution develops gameplay and aesthetics through further playtesting and coordinated changes to materials and code.</p></details>
+        <details><summary>How should I read the comparisons?</summary><p>The selected clips illustrate different checkpoints and routes. They are not frame-matched A/B tests or the full benchmark cohort. The evaluation table reports the manuscript’s benchmark scores.</p></details>
+      </div>
+    </section>
   </main>
-  <footer class="container"><a class="wordmark" href="#top">Play<span>2</span>Evolve.</a><p>Playfulness as Feedback for Agentic Game Development</p><p class="preview-note">Local preview. Release resources will be added before publication.</p></footer>
+  <footer class="container site-footer">
+    <div><a class="wordmark" href="#top">Play<span>2</span>Evolve.</a><p>Playfulness as Feedback for Agentic Game Development</p><p class="preview-note">Research project preview · paper and code release forthcoming.</p></div>
+    <a class="back-top" href="#top">Back to top</a>
+  </footer>
 </body>
 </html>
