@@ -10,6 +10,22 @@ See [validation](docs/validation.md) for checks actually performed and
 No open-source license has been selected yet; this preparation copy does not grant
 redistribution rights beyond those already held by the respective owners.
 
+## Timeline
+
+- **November 24, 2026:** planned public release of the Play2Evolve code and
+  project page, subject to the final release checks.
+
+## Tips
+
+- Agent-authored code can fail for several reasons, including environment
+  differences, limitations of the agent, and small bugs in the generated or
+  integration code. We will continue improving the implementation and welcome
+  issue reports, suggestions, and other feedback.
+- Some failure cases are expected and are discussed in the paper. For example,
+  an agent may write an invalid call to an interface, which can cause the game
+  program or a downstream evaluation step to fail. When reporting a result,
+  please include the relevant logs and configuration so that we can reproduce it.
+
 ## Play2Evolve at a glance
 
 The teaser summarizes the central idea: playtest feedback drives coordinated
@@ -307,6 +323,12 @@ The old `bootstrap`, `initialize`, and `rsi` commands remain aliases for
 `--initialization-playtest` and `--rsi-mode` retain their meaning. See
 [stage naming](docs/architecture.md#stage-naming) before using historical scripts.
 
+## TODO
+
+- [ ] Continue organizing and preparing the Craft game packages for release.
+- [ ] Select and add the final open-source license, author list, paper link, and
+  release metadata.
+
 ## Repository
 
 - `src/game_initialization/`: requirements, builder tools, game-package construction.
@@ -336,3 +358,17 @@ Godot and the benchmark; one browser policy test requires host Node.js. Neither
 the full live Godot pipeline nor the live Docker pipeline was run for this release; consult the validation report for skipped or failing
 checks. Game packages contain executable adapter code and should come from
 trusted sources.
+
+## Citation
+
+If you use Play2Evolve in your research, please cite the project as follows:
+
+```bibtex
+@article{play2evolve2026,
+  title   = {Play2Evolve: Playfulness as Feedback for Agentic Game Development},
+  author  = {Play2Evolve Authors},
+  year    = {2026},
+  url     = {https://github.com/showlab/Play2Evolve},
+  note    = {Paper and author metadata to be finalized}
+}
+```
