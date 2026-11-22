@@ -146,3 +146,25 @@ footer { border-color: #2a3c33; }
   .evolution-story { padding: 18px; }
   .paper-figure>a { padding: 6px; }
 }
+
+/* Clip-level controls remain outside the picture and native video controls. */
+.video-speed {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 10px 0; color: var(--muted); font-size: 13px;
+}
+.video-speed select {
+  appearance: none; font: inherit; color: #d9f2cc; background-color: #17291d;
+  background-image: linear-gradient(45deg, transparent 50%, #bad5ac 50%), linear-gradient(135deg, #bad5ac 50%, transparent 50%);
+  background-position: calc(100% - 15px) 50%, calc(100% - 11px) 50%;
+  background-size: 4px 4px; background-repeat: no-repeat;
+  border: 1px solid #40583c; border-radius: 6px; padding: 8px 30px 8px 12px;
+  min-width: 90px; min-height: 40px; cursor: pointer;
+}
+.video-speed select:focus-visible { outline: 3px solid #a4d981; outline-offset: 3px; }
+.game-card>.video-speed { padding: 12px 20px 0; }
+@media(max-width:600px) {
+  .speed-picker { flex-wrap: wrap; }
+  .speed-picker>span { flex-basis: 100%; padding-block: 3px; }
+  .speed-picker button { flex: 1; padding-inline: 9px; }
+  .video-speed select { min-height: 44px; }
+}

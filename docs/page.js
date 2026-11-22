@@ -164,27 +164,56 @@ if ("IntersectionObserver" in window) {
   sync();
 })();
 
-// Gallery-only slow motion: preserve the timing of scientific comparisons.
+// Every clip has an independent speed control that survives source changes.
 (() => {
-  const gallery = [...document.querySelectorAll('#showcase video')];
+  const clips = [...document.querySelectorAll('video')];
+  const gallery = clips.filter(video => video.closest('#showcase'));
   const toolbar = document.querySelector('.showcase-toolbar');
   const buttons = [...document.querySelectorAll('[data-speed]')];
-  if (!gallery.length || !toolbar) return;
-  let speed = 0.75;
-  const applySpeed = video => {
-    video.defaultPlaybackRate = speed;
-    video.playbackRate = speed;
+  const controls = new Map();
+  const updateGallery = () => {
+    buttons.forEach(button => button.setAttribute('aria-pressed',
+      String(gallery.every(video => video.playbackRate === Number(button.dataset.speed)))));
   };
-  gallery.forEach(video => {
-    applySpeed(video);
-    video.addEventListener('loadedmetadata', () => applySpeed(video));
+  clips.forEach((video, index) => {
+    let speed = video.closest('#showcase') ? 0.75 : 1;
+    const label = document.createElement('label');
+    label.className = 'video-speed';
+    label.htmlFor = `video-speed-${index}`;
+    const text = document.createElement('span');
+    text.textContent = 'Playback speed';
+    const select = document.createElement('select');
+    select.id = label.htmlFor;
+    [0.25, 0.5, 0.75, 1].forEach(rate => {
+      select.add(new Option(`${rate}×`, String(rate)));
+    });
+    const apply = value => {
+      speed = value;
+      select.value = String(speed);
+      video.defaultPlaybackRate = speed;
+      video.playbackRate = speed;
+      updateGallery();
+    };
+    select.addEventListener('change', () => apply(Number(select.value)));
+    video.addEventListener('loadedmetadata', () => apply(speed));
+    video.addEventListener('ratechange', () => {
+      // Also reflect changes made with the browser's native playback menu.
+      speed = video.playbackRate;
+      if (![...select.options].some(option => Number(option.value) === speed)) {
+        select.add(new Option(`${speed}×`, String(speed)));
+      }
+      select.value = String(speed);
+      updateGallery();
+    });
+    label.append(text, select);
+    video.closest('.video-shell').insertAdjacentElement('afterend', label);
+    controls.set(video, apply);
+    apply(speed);
   });
   buttons.forEach(button => button.addEventListener('click', () => {
-    speed = Number(button.dataset.speed);
-    gallery.forEach(applySpeed);
-    buttons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    gallery.forEach(video => controls.get(video)(Number(button.dataset.speed)));
   }));
-  toolbar.hidden = false;
+  if (toolbar) toolbar.hidden = false;
 })();
 
 // Subtle, one-time entrances. No permanently hidden content or scroll handlers.
