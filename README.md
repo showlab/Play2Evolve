@@ -8,11 +8,13 @@
 > *Corresponding author*
 
 <p align="center">
-  <a href="https://showlab.github.io/Play2Evolve/">🌐 Project Page</a>
-  &nbsp;&nbsp;•&nbsp;&nbsp;
-  <a href="https://github.com/showlab/Play2Evolve">💻 Code</a>
-  &nbsp;&nbsp;•&nbsp;&nbsp;
-  📄 arXiv <em>(coming soon)</em>
+  <a href="https://showlab.github.io/Play2Evolve/">
+    <img src="https://img.shields.io/badge/Project-Page-0A66C2?logo=chromewebstore&logoColor=0A66C2" alt="Project Page">
+  </a>
+  <a href="https://github.com/showlab/Play2Evolve">
+    <img src="https://img.shields.io/badge/Code-Play2Evolve-181717?logo=github&logoColor=white" alt="Code">
+  </a>
+  <img src="https://img.shields.io/badge/arXiv-coming_soon-lightgrey?logo=arxiv&logoColor=B31B1B" alt="arXiv coming soon">
 </p>
 
 ## ✨ Abstract
