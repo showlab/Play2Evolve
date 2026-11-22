@@ -6,6 +6,12 @@ observe into diagnoses, and recursively improve both visual materials and game
 logic. This repository packages the
 GameCraft/Godot and GameASG/HTML implementations in one Python source tree.
 
+**Weijia Mao<sup>1</sup>**, **Kevin Qinghong Lin<sup>1</sup>**, **Zhen Fang<sup>2</sup>**, **Danze Chen<sup>1</sup>**, **Dongxing Mao<sup>1</sup>**, and **Mike Zheng Shou<sup>1</sup>***<br>
+<sup>1</sup> Show Lab, National University of Singapore · <sup>2</sup> University of Science and Technology of China<br>
+\* Corresponding author
+
+**Links:** [Project page](https://showlab.github.io/Play2Evolve/) · [Code](https://github.com/showlab/Play2Evolve) · **arXiv:** _link forthcoming_
+
 **Release preparation:** the source has been extracted from a research workspace.
 See [validation](docs/validation.md) for checks actually performed and
 [release checklist](docs/release_checklist.md) for remaining publication work.
@@ -328,8 +334,8 @@ The old `bootstrap`, `initialize`, and `rsi` commands remain aliases for
 ## 🧭 TODO
 
 - [ ] Continue organizing and preparing the Craft game packages for release.
-- [ ] Select and add the final open-source license, author list, paper link, and
-  release metadata.
+- [ ] Add the arXiv URL once the preprint is posted.
+- [ ] Select and add the final open-source license and release metadata.
 
 ## 📦 Repository
 
@@ -367,10 +373,10 @@ If you use Play2Evolve in your research, please cite the project as follows:
 
 ```bibtex
 @article{play2evolve2026,
-  title   = {Play2Evolve: Playfulness as Feedback for Agentic Game Development},
-  author  = {Play2Evolve Authors},
+  title   = {Playfulness as Feedback for Agentic Game Development},
+  author  = {Mao, Weijia and Lin, Kevin Qinghong and Fang, Zhen and Chen, Danze and Mao, Dongxing and Shou, Mike Zheng},
   year    = {2026},
   url     = {https://github.com/showlab/Play2Evolve},
-  note    = {Paper and author metadata to be finalized}
+  note    = {arXiv link forthcoming}
 }
 ```
