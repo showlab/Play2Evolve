@@ -25,7 +25,8 @@ for static serving. This repository has not yet enabled GitHub Pages.
 ## Media and interpretation
 
 `media/` contains gameplay videos, posters, and paper figures. The showcase is a
-responsive card grid. Each video retains its own playback speed control.
+responsive six-card grid, including Plant Defense’s third RSI cycle and Tower
+Defense’s evolution checkpoint. Each video retains its own playback speed control.
 Tower Defense and Boxing Gym compare initialization, refinement, and evolution.
 The separate “The game keeps changing.” section shows Plant Defense’s original
 night/combat route clips from RSI cycles 1, 2, and 3.
