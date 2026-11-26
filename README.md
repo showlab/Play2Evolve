@@ -2,6 +2,17 @@
 
 ### Playfulness as Feedback for Agentic Game Development
 
+[Weijia Mao](https://maobenz.github.io/maobenz/)<sup>1</sup>,
+[Kevin Qinghong Lin](https://qhlin.me/)<sup>1</sup>,
+[Zhen Fang](https://costaliya.github.io/)<sup>2</sup>,
+[Danze Chen](https://danzer1xxxxchan.github.io/)<sup>1</sup>,
+[Dongxing Mao](https://dongxingmao.github.io/)<sup>1</sup>,
+Mike Zheng Shou<sup>1</sup>
+
+<sup>1</sup> Show Lab, National University of Singapore<br>
+<sup>2</sup> University of Science and Technology of China
+
+[Paper](https://arxiv.org/abs/2611.33457v1) · [Code](https://github.com/showlab/Play2Evolve) ·
 [Project page & video demos](https://play2evolve-project-preview.steadydrake257.chatgpt.site) ·
 [Method](https://play2evolve-project-preview.steadydrake257.chatgpt.site/#method) ·
 [Results](https://play2evolve-project-preview.steadydrake257.chatgpt.site/#results)
@@ -66,6 +77,6 @@ hosting details.
 
 ## Release status
 
-Paper metadata, author details, and release links are forthcoming. No open-source
-license has been selected; this branch does not grant redistribution rights beyond
+The [paper](https://arxiv.org/abs/2611.33457v1) is available on arXiv.
+No open-source license has been selected; this branch does not grant redistribution rights beyond
 those already held by the respective owners.

@@ -237,3 +237,14 @@ footer { border-color: #2a3c33; }
   .reading-notes { padding-bottom: 50px; }
   .site-footer { flex-direction: column; align-items: start; gap: 14px; }
 }
+
+/* Publication metadata uses the paper's author order and affiliations. */
+.paper-authors { margin-top: 26px; }
+.author-list { display: flex; flex-wrap: wrap; column-gap: 18px; row-gap: 8px; margin: 0; color: #e0eadf; font-size: 15px; line-height: 1.6; }
+.author-list>span { white-space: nowrap; }
+.author-list a { color: #d4eec3; text-underline-offset: 4px; }
+.author-list a:hover { color: #e9ffd8; }
+.paper-authors sup { font-size: .7em; margin-left: 3px; color: #adc99b; }
+.affiliations { display: grid; gap: 5px; margin: 13px 0 0; color: #a4b4ad; font-size: 13px; line-height: 1.6; }
+.affiliations sup { margin-left: 0; margin-right: 4px; }
+@media(max-width:600px) { .author-list { font-size: 14px; column-gap: 14px; } .paper-authors { margin-top: 22px; } }
