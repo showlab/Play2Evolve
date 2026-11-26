@@ -86,7 +86,7 @@
     <section id="showcase" class="container section" aria-labelledby="showcase-title">
       <div class="section-heading"><div><p class="eyebrow">Video-generated materials in playable games</p><h2 id="showcase-title">From a description to a game.</h2></div><p>Video models create the visual materials. Game code brings them into interactive play. Explore real recordings across genres.</p></div>
       <div class="showcase-toolbar" hidden>
-        <p>Slide through the games. Slow down any clip to explore the details.</p>
+        <p>Watch at your own pace. Each clip has its own speed control.</p>
         <div class="speed-picker" role="group" aria-label="Showcase playback speed">
           <span>All showcase clips</span>
           <button type="button" data-speed="0.25" aria-pressed="false">0.25×</button>
@@ -95,23 +95,18 @@
           <button type="button" data-speed="1" aria-pressed="false">1×</button>
         </div>
       </div>
-      <div class="game-grid showcase-track" id="showcase-track" role="region" aria-roledescription="carousel" aria-label="Generated game showcases" tabindex="0">
+      <div class="game-grid">
         <article class="game-card"><div class="video-shell"><video controls playsinline muted loop preload="none" poster="media/sky-duel.jpg" aria-label="Sky Duel aerial combat"><source src="media/sky-duel.mp4" type="video/mp4"></video></div><div class="card-caption"><div><h3>Sky Duel</h3><p>Aerial combat in a moving sky.</p></div><span class="stage">Initialization</span></div></article>
         <article class="game-card"><div class="video-shell"><video controls playsinline muted loop preload="none" poster="media/boxing.jpg" aria-label="Boxing championship candidate gameplay"><source src="media/boxing.mp4" type="video/mp4"></video></div><div class="card-caption"><div><h3>Boxing Gym</h3><p>Combat, counterplay, and a knockout.</p></div><span class="stage">Evolution candidate</span></div></article>
         <article class="game-card"><div class="video-shell"><video controls playsinline muted loop preload="none" poster="media/arcane-academy.jpg" aria-label="Arcane Academy character interaction"><source src="media/arcane-academy.mp4" type="video/mp4"></video></div><div class="card-caption"><div><h3>Arcane Academy</h3><p>A coordinated two-character interaction.</p></div><span class="stage">Refinement</span></div></article>
         <article class="game-card"><div class="video-shell"><video controls playsinline muted loop preload="none" poster="media/dungeon-guild.jpg" aria-label="Dungeon Guild progression"><source src="media/dungeon-guild.mp4" type="video/mp4"></video></div><div class="card-caption"><div><h3>Dungeon Guild</h3><p>Recruit, equip, and complete a quest.</p></div><span class="stage">Refinement</span></div></article>
       </div>
-      <div class="showcase-navigation" hidden>
-        <div class="showcase-position"><span id="showcase-count">01 / 04</span><span id="showcase-current">Sky Duel</span></div>
-        <div class="showcase-dots" role="group" aria-label="Choose a showcase game"></div>
-        <div class="showcase-step"><button type="button" class="button" id="showcase-prev" aria-controls="showcase-track" disabled>Previous</button><button type="button" class="button" id="showcase-next" aria-controls="showcase-track">Next</button></div>
-      </div>
       <p class="section-note">Selected excerpts illustrate different games and development stages. They are not all final evolved checkpoints.</p>
     </section>
 
     <section id="evolution" class="section section-tint" aria-labelledby="evolution-title"><div class="container">
-      <div class="section-heading"><div><p class="eyebrow">Watch the development process</p><h2 id="evolution-title">The same game, evolving.</h2></div><p>Inspect initialization, refinement, and evolution side by side. Choose a game below, then play all three checkpoints.</p></div>
-      <div class="comparison-toolbar"><div class="game-picker" role="group" aria-label="Choose a comparison game"><button type="button" data-game="tower-defense" aria-pressed="true">Tower Defense</button><button type="button" data-game="boxing" aria-pressed="false">Boxing Gym</button><button type="button" data-game="pirate-port" aria-pressed="false">Pirate Port</button></div><button type="button" id="play-comparison" class="button compact">Play all three</button></div>
+      <div class="section-heading"><div><p class="eyebrow">Watch the development process</p><h2 id="evolution-title">The same game, evolving.</h2></div><p>Compare development checkpoints or successive evolution cycles side by side. Choose a game below, then play all three versions.</p></div>
+      <div class="comparison-toolbar"><div class="game-picker" role="group" aria-label="Choose a comparison game"><button type="button" data-game="tower-defense" aria-pressed="true">Tower Defense</button><button type="button" data-game="boxing" aria-pressed="false">Boxing Gym</button><button type="button" data-game="plant-defense" aria-pressed="false">Plant Defense</button></div><button type="button" id="play-comparison" class="button compact">Play all three</button></div>
       <p id="comparison-scene" class="comparison-scene" aria-live="polite">Tower Defense · combat scene</p>
       <div class="comparison-grid">
         <figure><figcaption><span>V0</span><h3>Initialization</h3><p>Create the runnable game.</p></figcaption><div class="video-shell"><video id="compare-bootstrap" controls playsinline muted preload="none" poster="media/compare-tower-defense-bootstrap.jpg" src="media/compare-tower-defense-bootstrap.mp4" aria-label="Tower Defense initialization"></video></div></figure>

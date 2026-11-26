@@ -25,9 +25,10 @@ for static serving. This repository has not yet enabled GitHub Pages.
 ## Media and interpretation
 
 `media/` contains gameplay videos, posters, and paper figures. The showcase is a
-manual horizontal carousel with touch/trackpad scrolling, Previous/Next controls,
-and keyboard navigation. Each video retains its own playback speed control.
-Stage comparison clips illustrate checkpoints rather than frame-matched A/B tests.
+responsive card grid. Each video retains its own playback speed control.
+Tower Defense and Boxing Gym compare initialization, refinement, and evolution.
+Plant Defense shows the original night/combat route clips from RSI cycles 1, 2, and 3.
+Comparison clips illustrate checkpoints rather than frame-matched A/B tests.
 Do not change manuscript scores or checkpoint labels as part of visual edits.
 
 Author affiliations follow the paper. [Paper](https://arxiv.org/abs/2611.33457v1) · [Code](https://github.com/showlab/Play2Evolve).
