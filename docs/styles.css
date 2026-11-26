@@ -6,6 +6,15 @@
 @media(max-width:600px){html{scroll-padding-top:20px}.container{width:calc(100% - 36px)}.site-header{height:auto;min-height:104px;padding:16px 18px;flex-wrap:wrap;gap:12px}.site-header nav{width:100%;gap:22px;overflow-x:auto;padding-bottom:4px}.site-header nav a{font-size:13px;white-space:nowrap}.hero{padding:145px 0 95px}.hero .eyebrow{font-size:11px;letter-spacing:1px}.hero h1>span:first-child{font-size:clamp(44px,11vw,64px);letter-spacing:-2.8px;margin-bottom:22px}.hero-subtitle{font-size:27px;letter-spacing:-.8px}.hero-summary{font-size:16px}.hero-gallery{margin-top:6px}.hero-image-label{padding:18px}.hero-image-label strong{font-size:24px}.hero-feature{aspect-ratio:1.8}.hero-gallery-caption{font-size:12px}.hero-scroll{left:18px;font-size:10px;bottom:30px;letter-spacing:.6px}.hero-scroll span{display:none}.hero-motion{right:18px;bottom:22px;font-size:11px;min-height:40px}.resource-links{gap:14px}.resource-links .primary{width:100%}.resource-pending{font-size:13px}.preview-note{font-size:12px}.section{padding-block:60px}.eyebrow{font-size:12px;letter-spacing:1.2px}h2{font-size:32px;letter-spacing:-1px}.section-heading{margin-bottom:28px}.teaser-section{padding-top:38px}.paper-figure>a{padding:7px;border-radius:10px}.paper-figure figcaption{font-size:14px}.game-grid,.comparison-grid,.story-videos,.collaboration-panels,.material-layout,.method-stages,.result-highlights{grid-template-columns:1fr}.game-grid{gap:22px}.card-caption{padding:20px}.comparison-grid{gap:20px}.comparison-grid figure{padding:18px}.comparison-grid h3{font-size:19px}.comparison-grid figcaption>span{float:right;margin:0}.comparison-toolbar{align-items:stretch}.game-picker{width:100%;flex-wrap:nowrap}.game-picker button{padding:10px;flex:1;font-size:13px}.comparison-toolbar>.button{width:100%}.evolution-story{padding:18px}.story-heading{align-items:start}.story-heading .stage{max-width:115px}.story-heading h3{font-size:22px}.story-videos{gap:22px}.collaboration-panels article{padding:24px}.material-layout{gap:30px}.skill-note{display:block}.skill-note p{margin-top:14px}.result-highlights{gap:12px}.result-highlights>div{padding:22px}.result-highlights strong{font-size:44px}.method-stages{gap:28px}.abstract{padding:16px}th,td{padding:15px}footer{padding-block:32px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}.game-card:hover,.button.primary:hover{transform:none}}
 
+.project-video { padding-top: 64px; }
+.project-video .section-heading { margin-bottom: 26px; }
+.project-video figure { margin: 0; }
+.project-video .video-shell { border-radius: 14px; }
+@media(max-width:600px) {
+  .project-video { padding-top: 44px; }
+  .project-video .section-heading { margin-bottom: 22px; }
+}
+
 /* Night palette: shared with the opening, with luminous green accents. */
 :root {
   color-scheme: dark;
