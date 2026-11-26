@@ -24,9 +24,10 @@ for static serving. This repository has not yet enabled GitHub Pages.
 
 ## Media and interpretation
 
-`media/` contains all gameplay videos, posters, and paper figures. The selected
-Plant Defense clips retain their cycle and route labels;
-they illustrate successive saved versions rather than frame-matched A/B tests.
+`media/` contains gameplay videos, posters, and paper figures. The showcase is a
+manual horizontal carousel with touch/trackpad scrolling, Previous/Next controls,
+and keyboard navigation. Each video retains its own playback speed control.
+Stage comparison clips illustrate checkpoints rather than frame-matched A/B tests.
 Do not change manuscript scores or checkpoint labels as part of visual edits.
 
 Author affiliations follow the paper. [Paper](https://arxiv.org/abs/2611.33457v1) · [Code](https://github.com/showlab/Play2Evolve).

@@ -248,3 +248,47 @@ footer { border-color: #2a3c33; }
 .affiliations { display: grid; gap: 5px; margin: 13px 0 0; color: #a4b4ad; font-size: 13px; line-height: 1.6; }
 .affiliations sup { margin-left: 0; margin-right: 4px; }
 @media(max-width:600px) { .author-list { font-size: 14px; column-gap: 14px; } .paper-authors { margin-top: 22px; } }
+
+/* Native scroll keeps video controls usable and touch gestures interruptible. */
+#showcase-track {
+  --slide-width: 60%; position: relative; display: flex; gap: 24px;
+  overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory;
+  padding: 8px 0 20px; scrollbar-width: thin; scrollbar-color: #5d7a4b #101c17;
+}
+#showcase-track::after { content: ''; flex: 0 0 calc(100% - var(--slide-width) - 24px); }
+#showcase-track>.game-card { flex: 0 0 var(--slide-width); scroll-snap-align: start; min-width: 0; }
+#showcase-track>.game-card:hover { transform: none; }
+#showcase-track .card-caption { flex-direction: row; justify-content: space-between; align-items: start; padding: 20px 24px 24px; }
+#showcase-track .card-caption h3 { font-size: 25px; }
+#showcase-track .card-caption p { font-size: 16px; }
+#showcase-track .video-speed { padding-inline: 24px; }
+#showcase-track:focus-visible { outline: 2px solid #c7f994; outline-offset: 6px; }
+.showcase-navigation { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 20px; }
+.showcase-navigation[hidden] { display: none; }
+.showcase-position { display: flex; align-items: center; gap: 14px; min-width: 220px; font-size: 14px; }
+#showcase-count { color: #c7f994; font-variant-numeric: tabular-nums; letter-spacing: 1px; }
+#showcase-current { color: #bacabf; }
+.showcase-dots { display: flex; gap: 2px; }
+.showcase-dots button { display: grid; place-items: center; width: 36px; height: 44px; padding: 0; border: 0; background: transparent; border-radius: 6px; }
+.showcase-dots button::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #627969; transition: background .15s ease; }
+.showcase-dots button[aria-current="true"]::before { width: 22px; border-radius: 8px; background: #c7f994; }
+.showcase-step { display: flex; gap: 10px; }
+.showcase-step .button { min-width: 92px; user-select: none; }
+.showcase-step .button:disabled { cursor: default; opacity: .38; }
+.showcase-step .button:active:not(:disabled) { background: #354f34; }
+@media(hover:hover) and (pointer:fine) { .showcase-dots button:hover { background: #203224; } }
+@media(pointer:coarse) { #showcase-track .video-speed select { font-size: 16px; } }
+@media(max-width:850px) { #showcase-track { --slide-width: 78%; } .showcase-position { min-width: 0; } }
+@media(max-width:600px) {
+  #showcase-track { --slide-width: 90%; gap: 16px; }
+  #showcase-track::after { flex-basis: calc(100% - var(--slide-width) - 16px); }
+  #showcase-track .card-caption { flex-direction: column; gap: 12px; padding: 18px; }
+  #showcase-track .card-caption h3 { font-size: 22px; }
+  #showcase-track .card-caption p { font-size: 14px; }
+  #showcase-track .video-speed { padding-inline: 18px; }
+  .showcase-navigation { flex-wrap: wrap; gap: 4px 16px; margin-top: 12px; }
+  .showcase-position { flex: 1; }
+  .showcase-dots { order: 3; width: 100%; justify-content: center; }
+  .showcase-step { gap: 6px; }
+  .showcase-step .button { min-width: 0; padding: 8px 10px; font-size: 13px; }
+}

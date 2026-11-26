@@ -227,7 +227,7 @@ if ("IntersectionObserver" in window) {
       observer.unobserve(entry.target);
     });
   }, { threshold: 0.12 });
-  document.querySelectorAll('.section-heading, .game-card, .evolution-story, .collaboration-panels article, .result-highlights>div')
+  document.querySelectorAll('.section-heading, .collaboration-panels article, .result-highlights>div')
     .forEach(item => observer.observe(item));
 })();
 
@@ -246,4 +246,60 @@ if ("IntersectionObserver" in window) {
     });
   }, { rootMargin: '-15% 0px -65% 0px', threshold: 0 });
   sections.filter(Boolean).forEach(section => observer.observe(section));
+})();
+
+// Manual carousel: native swipe/trackpad scrolling, buttons, and keyboard access.
+(() => {
+  const track = document.getElementById('showcase-track');
+  if (!track) return;
+  const cards = [...track.querySelectorAll('.game-card')];
+  const nav = document.querySelector('.showcase-navigation');
+  const dots = nav.querySelector('.showcase-dots');
+  const previous = document.getElementById('showcase-prev');
+  const next = document.getElementById('showcase-next');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  let selected = 0;
+  let frame = 0;
+  const positions = () => cards.map(card => card.offsetLeft);
+  function go(index, keyboard = false) {
+    index = Math.max(0, Math.min(cards.length - 1, index));
+    track.scrollTo({ left: positions()[index], behavior: keyboard || reduced.matches ? 'instant' : 'smooth' });
+  }
+  const buttons = cards.map((card, index) => {
+    const title = card.querySelector('h3').textContent;
+    card.setAttribute('role', 'group');
+    card.setAttribute('aria-roledescription', 'slide');
+    card.setAttribute('aria-label', `${index + 1} of ${cards.length}: ${title}`);
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.setAttribute('aria-label', `Show ${title}`);
+    button.setAttribute('aria-controls', 'showcase-track');
+    button.title = title;
+    button.addEventListener('click', event => go(index, event.detail === 0));
+    dots.append(button);
+    return button;
+  });
+  function update() {
+    frame = 0;
+    const offsets = positions();
+    selected = offsets.reduce((best, value, index) => Math.abs(value - track.scrollLeft) < Math.abs(offsets[best] - track.scrollLeft) ? index : best, 0);
+    previous.disabled = selected === 0;
+    next.disabled = selected === cards.length - 1;
+    buttons.forEach((button, index) => button.setAttribute('aria-current', String(index === selected)));
+    document.getElementById('showcase-count').textContent = `${String(selected + 1).padStart(2, '0')} / ${String(cards.length).padStart(2, '0')}`;
+    document.getElementById('showcase-current').textContent = cards[selected].querySelector('h3').textContent;
+  }
+  previous.addEventListener('click', event => go(selected - 1, event.detail === 0));
+  next.addEventListener('click', event => go(selected + 1, event.detail === 0));
+  track.addEventListener('scroll', () => { if (!frame) frame = requestAnimationFrame(update); }, { passive: true });
+  track.addEventListener('keydown', event => {
+    if (event.target !== track) return; // Preserve native video and select shortcuts.
+    const target = { ArrowLeft: selected - 1, ArrowRight: selected + 1, Home: 0, End: cards.length - 1 }[event.key];
+    if (target === undefined) return;
+    event.preventDefault();
+    go(target, true);
+  });
+  new ResizeObserver(update).observe(track);
+  nav.hidden = false;
+  update();
 })();

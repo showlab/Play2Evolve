@@ -86,7 +86,7 @@
     <section id="showcase" class="container section" aria-labelledby="showcase-title">
       <div class="section-heading"><div><p class="eyebrow">Video-generated materials in playable games</p><h2 id="showcase-title">From a description to a game.</h2></div><p>Video models create the visual materials. Game code brings them into interactive play. Explore real recordings across genres.</p></div>
       <div class="showcase-toolbar" hidden>
-        <p>Watch at your own pace. Each clip has its own speed control.</p>
+        <p>Slide through the games. Slow down any clip to explore the details.</p>
         <div class="speed-picker" role="group" aria-label="Showcase playback speed">
           <span>All showcase clips</span>
           <button type="button" data-speed="0.25" aria-pressed="false">0.25×</button>
@@ -95,12 +95,17 @@
           <button type="button" data-speed="1" aria-pressed="false">1×</button>
         </div>
       </div>
-      <div class="game-grid">
+      <div class="game-grid showcase-track" id="showcase-track" role="region" aria-roledescription="carousel" aria-label="Generated game showcases" tabindex="0">
         <article class="game-card"><div class="video-shell"><video controls playsinline muted loop preload="none" poster="media/sky-duel.jpg" aria-label="Sky Duel aerial combat"><source src="media/sky-duel.mp4" type="video/mp4"></video></div><div class="card-caption"><div><h3>Sky Duel</h3><p>Aerial combat in a moving sky.</p></div><span class="stage">Initialization</span></div></article>
         <article class="game-card"><div class="video-shell"><video controls playsinline muted loop preload="none" poster="media/dollhouse.jpg" aria-label="Dollhouse room and anomaly"><source src="media/dollhouse.mp4" type="video/mp4"></video></div><div class="card-caption"><div><h3>Dollhouse</h3><p>A room transforms around a hidden anomaly.</p></div><span class="stage">Initialization</span></div></article>
         <article class="game-card"><div class="video-shell"><video controls playsinline muted loop preload="none" poster="media/boxing.jpg" aria-label="Boxing championship candidate gameplay"><source src="media/boxing.mp4" type="video/mp4"></video></div><div class="card-caption"><div><h3>Boxing Gym</h3><p>Combat, counterplay, and a knockout.</p></div><span class="stage">Evolution candidate</span></div></article>
         <article class="game-card"><div class="video-shell"><video controls playsinline muted loop preload="none" poster="media/arcane-academy.jpg" aria-label="Arcane Academy character interaction"><source src="media/arcane-academy.mp4" type="video/mp4"></video></div><div class="card-caption"><div><h3>Arcane Academy</h3><p>A coordinated two-character interaction.</p></div><span class="stage">Refinement</span></div></article>
         <article class="game-card"><div class="video-shell"><video controls playsinline muted loop preload="none" poster="media/dungeon-guild.jpg" aria-label="Dungeon Guild progression"><source src="media/dungeon-guild.mp4" type="video/mp4"></video></div><div class="card-caption"><div><h3>Dungeon Guild</h3><p>Recruit, equip, and complete a quest.</p></div><span class="stage">Refinement</span></div></article>
+      </div>
+      <div class="showcase-navigation" hidden>
+        <div class="showcase-position"><span id="showcase-count">01 / 05</span><span id="showcase-current">Sky Duel</span></div>
+        <div class="showcase-dots" role="group" aria-label="Choose a showcase game"></div>
+        <div class="showcase-step"><button type="button" class="button" id="showcase-prev" aria-controls="showcase-track" disabled>Previous</button><button type="button" class="button" id="showcase-next" aria-controls="showcase-track">Next</button></div>
       </div>
       <p class="section-note">Selected excerpts illustrate different games and development stages. They are not all final evolved checkpoints.</p>
     </section>
@@ -118,22 +123,7 @@
       <p id="comparison-status" role="status"></p>
     </div></section>
 
-    <section id="evolution-stories" class="section section-tint" aria-labelledby="evolution-stories-title"><div class="container">
-      <div class="section-heading"><div><p class="eyebrow">Repeated evolution</p><h2 id="evolution-stories-title">The game keeps changing.</h2></div><p>These selected clips follow Plant Defense across successive versions, showing how new play goals and generated materials accumulate over time.</p></div>
-      <div class="evolution-stories">
-        <article class="evolution-story">
-          <div class="story-heading"><div><h3>Plant Defense</h3><p>Night and combat route</p></div><span class="stage">Three RSI cycles</span></div>
-          <div class="story-videos">
-            <figure><div class="video-shell"><video controls playsinline muted loop preload="none" poster="media/evolution-plant-rsi1.jpg" aria-label="Plant Defense RSI cycle one"><source src="media/evolution-plant-rsi1.mp4" type="video/mp4"></video></div><figcaption>RSI cycle 1</figcaption></figure>
-            <figure><div class="video-shell"><video controls playsinline muted loop preload="none" poster="media/evolution-plant-rsi2.jpg" aria-label="Plant Defense RSI cycle two"><source src="media/evolution-plant-rsi2.mp4" type="video/mp4"></video></div><figcaption>RSI cycle 2</figcaption></figure>
-            <figure><div class="video-shell"><video controls playsinline muted loop preload="none" poster="media/evolution-plant-rsi3.jpg" aria-label="Plant Defense RSI cycle three"><source src="media/evolution-plant-rsi3.mp4" type="video/mp4"></video></div><figcaption>RSI cycle 3</figcaption></figure>
-          </div>
-        </article>
-      </div>
-      <p class="section-note">The clips are selected demonstrations from successive saved versions. They preserve the game and route labels, but are not frame-matched A/B tests.</p>
-    </div></section>
-
-    <section id="materials" class="container section" aria-labelledby="materials-title">
+<section id="materials" class="container section" aria-labelledby="materials-title">
       <div class="section-heading"><div><p class="eyebrow">Video generation meets game code</p><h2 id="materials-title">Generate the motion.<br>Program the interaction.</h2></div><p>The planner chooses what the video model should generate and how code should integrate it into the game.</p></div>
       <div class="collaboration-panels">
         <article><p class="eyebrow">Video generation model</p><h3>Appearance, motion, and coordinated actions</h3><p>Generate still images, character animations, coupled actions, or environmental motion. Revise prompts, visual references, and generation scope when playtests reveal a material problem.</p></article>

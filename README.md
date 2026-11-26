@@ -41,8 +41,8 @@ changes to visual materials and executable logic.
 The implementation and setup documentation remain on the
 [`main` branch](https://github.com/showlab/Play2Evolve/tree/main).
 
-The website includes gameplay recordings, stage comparisons, successive evolution
-demos, method figures, and manuscript results. Every video has independent
+The website includes a horizontally scrollable gallery of five gameplay recordings,
+stage comparisons, method figures, and manuscript results. Every video has independent
 **0.25× / 0.5× / 0.75× / 1×** playback controls. Demo recordings are illustrative
 checkpoints, not frame-matched A/B tests or the full benchmark cohort.
 
