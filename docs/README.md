@@ -27,7 +27,8 @@ for static serving. This repository has not yet enabled GitHub Pages.
 `media/` contains gameplay videos, posters, and paper figures. The showcase is a
 responsive card grid. Each video retains its own playback speed control.
 Tower Defense and Boxing Gym compare initialization, refinement, and evolution.
-Plant Defense shows the original night/combat route clips from RSI cycles 1, 2, and 3.
+The separate “The game keeps changing.” section shows Plant Defense’s original
+night/combat route clips from RSI cycles 1, 2, and 3.
 Comparison clips illustrate checkpoints rather than frame-matched A/B tests.
 Do not change manuscript scores or checkpoint labels as part of visual edits.
 

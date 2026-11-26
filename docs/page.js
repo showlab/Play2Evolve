@@ -3,21 +3,10 @@
 const comparisons = {
   "tower-defense": { title: "Tower Defense", scene: "combat scene" },
   boxing: { title: "Boxing Gym", scene: "ring combat" },
-  "plant-defense": {
-    title: "Plant Defense", scene: "night and combat route · successive RSI cycles",
-    clips: [1, 2, 3].map(cycle => ({
-      media: `evolution-plant-rsi${cycle}`, badge: `RSI ${cycle}`,
-      title: `RSI cycle ${cycle}`, description: "Successive evolution checkpoint.",
-    })),
-  },
 };
 const stages = ["bootstrap", "init3", "rsi"];
 const stageLabels = ["initialization", "refinement", "evolution"];
 const videos = stages.map(stage => document.getElementById(`compare-${stage}`));
-const defaultCaptions = videos.map(video => {
-  const caption = video.closest('figure').querySelector('figcaption');
-  return { badge: caption.querySelector('span').textContent, title: caption.querySelector('h3').textContent, description: caption.querySelector('p').textContent };
-});
 const playButton = document.getElementById("play-comparison");
 const status = document.getElementById("comparison-status");
 let selection = 0;
@@ -30,16 +19,9 @@ document.querySelectorAll("[data-game]").forEach(button => {
     document.querySelectorAll("[data-game]").forEach(item => item.setAttribute("aria-pressed", String(item === button)));
     videos.forEach((video, index) => {
       video.pause();
-      const clip = game.clips?.[index];
-      const media = clip?.media ?? `compare-${id}-${stages[index]}`;
-      video.poster = `media/${media}.jpg`;
-      video.src = `media/${media}.mp4`;
-      video.setAttribute("aria-label", `${game.title} ${clip?.title ?? stageLabels[index]}`);
-      const caption = video.closest('figure').querySelector('figcaption');
-      const labels = clip ?? defaultCaptions[index];
-      caption.querySelector('span').textContent = labels.badge;
-      caption.querySelector('h3').textContent = labels.title;
-      caption.querySelector('p').textContent = labels.description;
+      video.poster = `media/compare-${id}-${stages[index]}.jpg`;
+      video.src = `media/compare-${id}-${stages[index]}.mp4`;
+      video.setAttribute("aria-label", `${game.title} ${stageLabels[index]}`);
       video.parentElement.parentElement.querySelector(".video-error")?.remove();
       video.load();
     });
@@ -244,7 +226,7 @@ if ("IntersectionObserver" in window) {
       observer.unobserve(entry.target);
     });
   }, { threshold: 0.12 });
-  document.querySelectorAll('.section-heading, .game-card, .collaboration-panels article, .result-highlights>div')
+  document.querySelectorAll('.section-heading, .game-card, .evolution-story, .collaboration-panels article, .result-highlights>div')
     .forEach(item => observer.observe(item));
 })();
 

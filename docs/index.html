@@ -105,8 +105,8 @@
     </section>
 
     <section id="evolution" class="section section-tint" aria-labelledby="evolution-title"><div class="container">
-      <div class="section-heading"><div><p class="eyebrow">Watch the development process</p><h2 id="evolution-title">The same game, evolving.</h2></div><p>Compare development checkpoints or successive evolution cycles side by side. Choose a game below, then play all three versions.</p></div>
-      <div class="comparison-toolbar"><div class="game-picker" role="group" aria-label="Choose a comparison game"><button type="button" data-game="tower-defense" aria-pressed="true">Tower Defense</button><button type="button" data-game="boxing" aria-pressed="false">Boxing Gym</button><button type="button" data-game="plant-defense" aria-pressed="false">Plant Defense</button></div><button type="button" id="play-comparison" class="button compact">Play all three</button></div>
+      <div class="section-heading"><div><p class="eyebrow">Watch the development process</p><h2 id="evolution-title">The same game, evolving.</h2></div><p>Inspect initialization, refinement, and evolution side by side. Choose a game below, then play all three checkpoints.</p></div>
+      <div class="comparison-toolbar"><div class="game-picker" role="group" aria-label="Choose a comparison game"><button type="button" data-game="tower-defense" aria-pressed="true">Tower Defense</button><button type="button" data-game="boxing" aria-pressed="false">Boxing Gym</button></div><button type="button" id="play-comparison" class="button compact">Play all three</button></div>
       <p id="comparison-scene" class="comparison-scene" aria-live="polite">Tower Defense · combat scene</p>
       <div class="comparison-grid">
         <figure><figcaption><span>V0</span><h3>Initialization</h3><p>Create the runnable game.</p></figcaption><div class="video-shell"><video id="compare-bootstrap" controls playsinline muted preload="none" poster="media/compare-tower-defense-bootstrap.jpg" src="media/compare-tower-defense-bootstrap.mp4" aria-label="Tower Defense initialization"></video></div></figure>
@@ -117,7 +117,22 @@
       <p id="comparison-status" role="status"></p>
     </div></section>
 
-<section id="materials" class="container section" aria-labelledby="materials-title">
+    <section id="evolution-stories" class="section section-tint" aria-labelledby="evolution-stories-title"><div class="container">
+      <div class="section-heading"><div><p class="eyebrow">Repeated evolution</p><h2 id="evolution-stories-title">The game keeps changing.</h2></div><p>These selected clips follow Plant Defense across successive versions, showing how new play goals and generated materials accumulate over time.</p></div>
+      <div class="evolution-stories">
+        <article class="evolution-story">
+          <div class="story-heading"><div><h3>Plant Defense</h3><p>Night and combat route</p></div><span class="stage">Three RSI cycles</span></div>
+          <div class="story-videos">
+            <figure><div class="video-shell"><video controls playsinline muted loop preload="none" poster="media/evolution-plant-rsi1.jpg" aria-label="Plant Defense RSI cycle one"><source src="media/evolution-plant-rsi1.mp4" type="video/mp4"></video></div><figcaption>RSI cycle 1</figcaption></figure>
+            <figure><div class="video-shell"><video controls playsinline muted loop preload="none" poster="media/evolution-plant-rsi2.jpg" aria-label="Plant Defense RSI cycle two"><source src="media/evolution-plant-rsi2.mp4" type="video/mp4"></video></div><figcaption>RSI cycle 2</figcaption></figure>
+            <figure><div class="video-shell"><video controls playsinline muted loop preload="none" poster="media/evolution-plant-rsi3.jpg" aria-label="Plant Defense RSI cycle three"><source src="media/evolution-plant-rsi3.mp4" type="video/mp4"></video></div><figcaption>RSI cycle 3</figcaption></figure>
+          </div>
+        </article>
+      </div>
+      <p class="section-note">The clips are selected demonstrations from successive saved versions. They preserve the game and route labels, but are not frame-matched A/B tests.</p>
+    </div></section>
+
+    <section id="materials" class="container section" aria-labelledby="materials-title">
       <div class="section-heading"><div><p class="eyebrow">Video generation meets game code</p><h2 id="materials-title">Generate the motion.<br>Program the interaction.</h2></div><p>The planner chooses what the video model should generate and how code should integrate it into the game.</p></div>
       <div class="collaboration-panels">
         <article><p class="eyebrow">Video generation model</p><h3>Appearance, motion, and coordinated actions</h3><p>Generate still images, character animations, coupled actions, or environmental motion. Revise prompts, visual references, and generation scope when playtests reveal a material problem.</p></article>
