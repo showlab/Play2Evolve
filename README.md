@@ -7,7 +7,7 @@
 [Zhen Fang](https://costaliya.github.io/)<sup>2</sup>,
 [Danze Chen](https://danzer1xxxxchan.github.io/)<sup>1</sup>,
 [Dongxing Mao](https://dongxingmao.github.io/)<sup>1</sup>,
-Mike Zheng Shou<sup>1</sup>
+[Mike Zheng Shou](https://cde.nus.edu.sg/ece/staff/shou-zheng-mike/)<sup>1</sup>
 
 <sup>1</sup> Show Lab, National University of Singapore<br>
 <sup>2</sup> University of Science and Technology of China
